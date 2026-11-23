@@ -7,7 +7,8 @@ LLM_KEY = os.environ["GROQ_API_KEY"].strip()
 print("key length:", len(LLM_KEY), "starts with:", LLM_KEY[:4])
 LLM_URL = "https://api.groq.com/openai/v1/chat/completions"
 MODEL = "openai/gpt-oss-20b"
-
+_m = requests.get("https://api.groq.com/openai/v1/models", headers={"Authorization": f"Bearer {LLM_KEY}"}, timeout=30)
+print("available:", [m["id"] for m in _m.json().get("data", [])])
 
 def ask_llm(prompt):
     r = requests.post(

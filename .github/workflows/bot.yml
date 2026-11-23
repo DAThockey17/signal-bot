@@ -1,6 +1,8 @@
 name: bot
 on:
   workflow_dispatch:
+  schedule:
+    - cron: "17 * * * *"
 jobs:
   run:
     runs-on: ubuntu-latest

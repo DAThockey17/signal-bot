@@ -3,6 +3,7 @@ import requests
 
 TOKEN = os.environ["TELEGRAM_TOKEN"]
 CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
+print("token length:", len(TOKEN), "has colon:", ":" in TOKEN)
 LLM_KEY = os.environ["GROQ_API_KEY"].strip()
 print("key length:", len(LLM_KEY), "starts with:", LLM_KEY[:4])
 LLM_URL = "https://api.groq.com/openai/v1/chat/completions"

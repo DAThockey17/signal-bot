@@ -6,7 +6,8 @@
    "entry_price": 0.00026,
    "picked": true,
    "status": "open",
-   "opened": 1795394254.6399782
+   "opened": 1795394254.6399782,
+   "last_price": 0.0004013
   },
   {
    "address": "7cFiqdT46zs7ooHWLFiLSaSQKLMibtokh9dBinsspump",
@@ -14,7 +15,8 @@
    "entry_price": 0.001257,
    "picked": true,
    "status": "open",
-   "opened": 1795394254.63998
+   "opened": 1795394254.63998,
+   "last_price": 0.0005865
   },
   {
    "address": "AQfw8J74V17erZsmMz4oK474eVLBaP44gD33vVbhtHo5",
@@ -22,7 +24,8 @@
    "entry_price": 0.0002276,
    "picked": false,
    "status": "open",
-   "opened": 1795394254.6399813
+   "opened": 1795394254.6399813,
+   "last_price": 0.0001492
   },
   {
    "address": "3BcJ4SSCfbxDMrWcUDucyCWxMjmy4M2ECCtvxu86pump",
@@ -30,7 +33,8 @@
    "entry_price": 0.0026,
    "picked": true,
    "status": "open",
-   "opened": 1795394254.639982
+   "opened": 1795394254.639982,
+   "last_price": 0.002927
   },
   {
    "address": "BAKsQrynzwadyACDMsg3J5R8a4CTvj1u7kEYyjq7pump",
@@ -38,7 +42,16 @@
    "entry_price": 0.0006141,
    "picked": false,
    "status": "open",
-   "opened": 1795394254.6399827
+   "opened": 1795394254.6399827,
+   "last_price": 0.0005771
+  },
+  {
+   "address": "93uamrbDerKbUh8MSjNF1wDtxYvEUD1CS9BcHn1apump",
+   "symbol": "PumpMeme",
+   "entry_price": 0.001426,
+   "picked": true,
+   "status": "open",
+   "opened": 1795424318.0948548
   }
  ],
  "last_report": 0

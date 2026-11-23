@@ -7,7 +7,7 @@
    "picked": true,
    "status": "open",
    "opened": 1795394254.6399782,
-   "last_price": 0.0004013
+   "last_price": 0.000208
   },
   {
    "address": "7cFiqdT46zs7ooHWLFiLSaSQKLMibtokh9dBinsspump",
@@ -16,7 +16,7 @@
    "picked": true,
    "status": "open",
    "opened": 1795394254.63998,
-   "last_price": 0.0005865
+   "last_price": 0.00053
   },
   {
    "address": "AQfw8J74V17erZsmMz4oK474eVLBaP44gD33vVbhtHo5",
@@ -25,7 +25,7 @@
    "picked": false,
    "status": "open",
    "opened": 1795394254.6399813,
-   "last_price": 0.0001492
+   "last_price": 0.0001093
   },
   {
    "address": "3BcJ4SSCfbxDMrWcUDucyCWxMjmy4M2ECCtvxu86pump",
@@ -34,7 +34,7 @@
    "picked": true,
    "status": "open",
    "opened": 1795394254.639982,
-   "last_price": 0.002927
+   "last_price": 1.526e-06
   },
   {
    "address": "BAKsQrynzwadyACDMsg3J5R8a4CTvj1u7kEYyjq7pump",
@@ -43,7 +43,7 @@
    "picked": false,
    "status": "open",
    "opened": 1795394254.6399827,
-   "last_price": 0.0005771
+   "last_price": 0.0008069
   },
   {
    "address": "93uamrbDerKbUh8MSjNF1wDtxYvEUD1CS9BcHn1apump",
@@ -51,7 +51,16 @@
    "entry_price": 0.001426,
    "picked": true,
    "status": "open",
-   "opened": 1795424318.0948548
+   "opened": 1795424318.0948548,
+   "last_price": 0.0005075
+  },
+  {
+   "address": "8WW5B189mPntQQ85HTPvQNsYxXhQbAhdjXvZ6qaapump",
+   "symbol": "ChristmASS",
+   "entry_price": 0.0002631,
+   "picked": true,
+   "status": "open",
+   "opened": 1795468622.513484
   }
  ],
  "last_report": 0

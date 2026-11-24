@@ -2,6 +2,7 @@ import os
 import re
 import json
 import time
+import random
 import requests
 
 TOKEN = os.environ["TELEGRAM_TOKEN"]
@@ -10,14 +11,20 @@ LLM_KEY = os.environ["GROQ_API_KEY"].strip()
 LLM_URL = "https://api.groq.com/openai/v1/chat/completions"
 MODEL = "openai/gpt-oss-20b"
 
+# ---- Filters (edit these) ----
 MIN_LIQUIDITY = 25000
 MIN_VOLUME_24H = 50000
-MAX_CANDIDATES = 8
+MIN_VOL_LIQ_RATIO = 1.0
+MIN_AGE_HOURS = 1
+MAX_CANDIDATES = 12
+MAX_AI_PICKS = 3
+MAX_RANDOM_PICKS = 3
 
+# ---- Paper trading ----
 LEDGER_FILE = "paper_trades.json"
-TRADE_SIZE = 100   # pretend dollars per trade
-HOLD_HOURS = 24    # how long each trade is held
-FEE_PCT = 3.0      # assumed round-trip cost per trade
+TRADE_SIZE = 100
+FEE_PCT = 3.0
+CHECKPOINTS = [1, 6, 24]
 
 
 def get_json(url):
@@ -45,6 +52,7 @@ def find_candidates():
     if not addrs:
         return []
     data = get_json("https://api.dexscreener.com/latest/dex/tokens/" + ",".join(addrs))
+    now_ms = time.time() * 1000
     best = {}
     for p in data.get("pairs") or []:
         if p.get("chainId") != "solana":
@@ -53,6 +61,12 @@ def find_candidates():
         vol = (p.get("volume") or {}).get("h24") or 0
         price = float(p.get("priceUsd") or 0)
         if liq < MIN_LIQUIDITY or vol < MIN_VOLUME_24H or price <= 0:
+            continue
+        if vol / liq < MIN_VOL_LIQ_RATIO:
+            continue
+        created = p.get("pairCreatedAt")
+        age = round((now_ms - created) / 3600000, 1) if created else None
+        if age is not None and age < MIN_AGE_HOURS:
             continue
         addr = p["baseToken"]["address"]
         if addr in best and best[addr]["liquidity"] >= liq:
@@ -69,10 +83,33 @@ def find_candidates():
             "change_24h_pct": change.get("h24"),
             "buys_24h": tx.get("buys"),
             "sells_24h": tx.get("sells"),
+            "age_hours": age,
             "url": p.get("url"),
         }
-    ranked = sorted(best.values(), key=lambda c: c["volume_24h"], reverse=True)
-    return ranked[:MAX_CANDIDATES]
+    return sorted(best.values(), key=lambda c: c["volume_24h"], reverse=True)
+
+
+def rug_check(mint):
+    try:
+        r = requests.get(
+            f"https://api.rugcheck.xyz/v1/tokens/{mint}/report/summary", timeout=30
+        )
+        if r.status_code != 200:
+            return None
+        d = r.json()
+    except Exception:
+        return None
+    risks = d.get("risks") or []
+    names = [x.get("name", "") for x in risks]
+    critical = any(
+        "mint authority" in n.lower() or "freeze authority" in n.lower() for n in names
+    )
+    return {
+        "score": d.get("score_normalised"),
+        "rugged": bool(d.get("rugged")),
+        "danger_flags": [x.get("name") for x in risks if x.get("level") == "danger"],
+        "safe_core": (not d.get("rugged")) and not critical,
+    }
 
 
 def fetch_prices(addrs):
@@ -93,27 +130,42 @@ def fetch_prices(addrs):
     return prices
 
 
+def calc_return(price, entry):
+    if not price:
+        return -100.0
+    return round(max((price / entry - 1) * 100 - FEE_PCT, -100.0), 2)
+
+
 def update_trades(ledger):
     open_trades = [t for t in ledger["trades"] if t["status"] == "open"]
     if not open_trades:
         return
-    prices = fetch_prices([t["address"] for t in open_trades])
+    try:
+        prices = fetch_prices([t["address"] for t in open_trades])
+    except Exception as e:
+        print("Price fetch failed:", e)
+        prices = {}
+    now = time.time()
     for t in open_trades:
         price = prices.get(t["address"])
         if price:
             t["last_price"] = price
-        age_hours = (time.time() - t["opened"]) / 3600
-        if age_hours < HOLD_HOURS:
-            continue
-        if price:
-            ret = (price / t["entry_price"] - 1) * 100 - FEE_PCT
-        else:
-            ret = -100.0
-            t["note"] = "no price found; counted as total loss"
-        t["status"] = "closed"
-        t["exit_price"] = price
-        t["return_pct"] = round(max(ret, -100.0), 2)
-        t["closed"] = time.time()
+        snaps = t.setdefault("snaps", {})
+        age_h = (now - t["opened"]) / 3600
+        for cp in CHECKPOINTS:
+            key = f"{cp}h"
+            if age_h < cp or key in snaps:
+                continue
+            if not price and age_h < cp + 3:
+                continue  # retry on a later run
+            snaps[key] = calc_return(price, t["entry_price"])
+        if "24h" in snaps:
+            t["status"] = "closed"
+            t["return_pct"] = snaps["24h"]
+            t["exit_price"] = price
+            t["closed"] = now
+            if not price:
+                t["note"] = "no price found; counted as total loss"
 
 
 def ask_llm(prompt):
@@ -138,35 +190,57 @@ def send(text):
         raise SystemExit(f"Telegram error {r.status_code}: {r.text[:300]}")
 
 
-def parse_picks(text, n):
+def parse_picks(text, valid_ids):
     m = re.search(r"PICKS:\s*([^\n]*)", text, re.I)
     if not m:
         return set()
-    return {int(x) for x in re.findall(r"\d+", m.group(1)) if 1 <= int(x) <= n}
+    ids = [int(x) for x in re.findall(r"\d+", m.group(1)) if int(x) in valid_ids]
+    return set(ids[:MAX_AI_PICKS])
 
 
-def group_stats(group):
-    if not group:
-        return "no closed trades yet"
-    rets = [t["return_pct"] for t in group]
-    wins = sum(1 for r in rets if r > 0)
-    return f"{len(group)} trades, win rate {wins / len(group) * 100:.0f}%, avg {sum(rets) / len(rets):+.1f}%"
+def group_of(t):
+    return t.get("group") or ("ai" if t.get("picked") else "other")
+
+
+def ret_at(t, key):
+    if key in t.get("snaps", {}):
+        return t["snaps"][key]
+    if key == "24h" and t.get("status") == "closed" and "return_pct" in t:
+        return t["return_pct"]
+    return None
+
+
+def fmt_group(name, trades):
+    parts = []
+    for cp in CHECKPOINTS:
+        vals = [v for v in (ret_at(t, f"{cp}h") for t in trades) if v is not None]
+        if vals:
+            win = sum(1 for v in vals if v > 0) / len(vals) * 100
+            parts.append(f"{cp}h {sum(vals) / len(vals):+.1f}% (win {win:.0f}%, n={len(vals)})")
+    return f"{name}: " + (" | ".join(parts) if parts else "no data yet")
 
 
 def build_report(ledger):
     trades = ledger["trades"]
-    closed = [t for t in trades if t["status"] == "closed"]
-    open_count = len(trades) - len(closed)
-    picked = [t for t in closed if t["picked"]]
-    others = [t for t in closed if not t["picked"]]
-    pnl = sum(TRADE_SIZE * t["return_pct"] / 100 for t in picked)
+    open_count = sum(1 for t in trades if t["status"] == "open")
+    ai = [t for t in trades if group_of(t) == "ai"]
+    rnd = [t for t in trades if group_of(t) == "random"]
+    other = [t for t in trades if group_of(t) == "other"]
+    safe = [t for t in trades if t.get("safe_core") is True]
+    unsafe = [t for t in trades if t.get("safe_core") is False]
+    ai_closed = [t for t in ai if t["status"] == "closed"]
+    pnl = sum(TRADE_SIZE * t["return_pct"] / 100 for t in ai_closed)
     return (
-        "Daily paper-trading report (pretend money, not advice)\n\n"
+        "Daily paper-trading report (pretend money, not advice)\n"
+        "Average return per trade after assumed costs\n\n"
         f"Open trades: {open_count}\n"
-        f"AI picks: {group_stats(picked)}\n"
-        f"Not picked: {group_stats(others)}\n"
-        f"Paper P&L on AI picks (${TRADE_SIZE} each): ${pnl:+.2f}\n\n"
-        "Judge by the AI picks vs Not picked comparison, and wait for 30+ closed trades."
+        + fmt_group("AI picks", ai) + "\n"
+        + fmt_group("Random picks", rnd) + "\n"
+        + fmt_group("Other", other) + "\n"
+        + fmt_group("Safe (no mint/freeze)", safe) + "\n"
+        + fmt_group("Unsafe", unsafe) + "\n\n"
+        f"Paper P&L on closed AI picks (${TRADE_SIZE} each): ${pnl:+.2f}\n"
+        "Key test: do AI picks beat Random picks? Wait for 30+ trades per group."
     )
 
 
@@ -174,44 +248,85 @@ ledger = load_ledger()
 update_trades(ledger)
 
 seen = {t["address"] for t in ledger["trades"]}
-new = [c for c in find_candidates() if c["address"] not in seen]
+new = [c for c in find_candidates() if c["address"] not in seen][:MAX_CANDIDATES]
 for i, c in enumerate(new, start=1):
     c["id"] = i
+    c["rug"] = rug_check(c["address"])
+    time.sleep(2.5)
 
 if new:
-    view = [{k: v for k, v in c.items() if k not in ("address", "url")} for c in new]
-    prompt = (
-        "You are a cautious crypto market analyst. Below is JSON data on new Solana tokens, "
-        "each with an id. Choose up to 3 that look most interesting based ONLY on this data. "
-        "Do not predict prices and do not invent facts. "
-        "Your reply must start with one line in exactly this format: PICKS: 2, 5 "
-        "(the chosen ids, or PICKS: none). Then give one short line per pick with the "
-        "symbol, the key reason, and the main risk. Keep it under 120 words.\n\n"
-        + json.dumps(view)
-    )
-    analysis = ask_llm(prompt)
-    picked_ids = parse_picks(analysis, len(new))
-    explanation = re.sub(r"^.*PICKS:.*$\n?", "", analysis, count=1, flags=re.M | re.I).strip()
+    eligible = [c for c in new if c["rug"] and c["rug"]["safe_core"]]
+    ai_ids = set()
+    explanation = "No tokens passed the safety check for AI picks this run."
+    if eligible:
+        view = [
+            {
+                "id": c["id"],
+                "symbol": c["symbol"],
+                "price_usd": c["price_usd"],
+                "liquidity": c["liquidity"],
+                "volume_24h": c["volume_24h"],
+                "change_1h_pct": c["change_1h_pct"],
+                "change_24h_pct": c["change_24h_pct"],
+                "buys_24h": c["buys_24h"],
+                "sells_24h": c["sells_24h"],
+                "age_hours": c["age_hours"],
+                "rugcheck_risk_score": c["rug"]["score"],
+                "rugcheck_danger_flags": c["rug"]["danger_flags"],
+            }
+            for c in eligible
+        ]
+        prompt = (
+            "You are a cautious crypto market analyst. Below is JSON data on new Solana tokens, "
+            "each with an id. Choose up to 3 that look most interesting based ONLY on this data. "
+            "Do not predict prices and do not invent facts. "
+            "Your reply must start with one line in exactly this format: PICKS: 2, 5 "
+            "(the chosen ids, or PICKS: none). Then give one short line per pick with the "
+            "symbol, the key reason, and the main risk. Keep it under 120 words.\n\n"
+            + json.dumps(view)
+        )
+        analysis = ask_llm(prompt)
+        ai_ids = parse_picks(analysis, {c["id"] for c in eligible})
+        explanation = re.sub(
+            r"^.*PICKS:.*$\n?", "", analysis, count=1, flags=re.M | re.I
+        ).strip()
 
+    pool = [c for c in new if c["id"] not in ai_ids]
+    random_ids = {c["id"] for c in random.sample(pool, min(MAX_RANDOM_PICKS, len(pool)))}
+
+    lines = []
     for c in new:
+        group = "ai" if c["id"] in ai_ids else "random" if c["id"] in random_ids else "other"
+        rug = c["rug"]
         ledger["trades"].append({
             "address": c["address"],
             "symbol": c["symbol"],
             "entry_price": c["price_usd"],
-            "picked": c["id"] in picked_ids,
+            "group": group,
+            "picked": group == "ai",
             "status": "open",
             "opened": time.time(),
+            "snaps": {},
+            "liquidity": c["liquidity"],
+            "volume_24h": c["volume_24h"],
+            "change_1h_pct": c["change_1h_pct"],
+            "change_24h_pct": c["change_24h_pct"],
+            "buys_24h": c["buys_24h"],
+            "sells_24h": c["sells_24h"],
+            "age_hours": c["age_hours"],
+            "rug_score": rug["score"] if rug else None,
+            "danger_flags": rug["danger_flags"] if rug else None,
+            "safe_core": rug["safe_core"] if rug else None,
         })
+        tag = {"ai": "AI", "random": "RND", "other": "-"}[group]
+        safety = "safe" if rug and rug["safe_core"] else "UNSAFE" if rug else "unchecked"
+        lines.append(f"{c['id']}. {c['symbol']} [{tag}] {safety}: {c['url']}")
     save_ledger(ledger)
 
-    lines = [
-        f"{c['id']}. {c['symbol']}{' [paper buy]' if c['id'] in picked_ids else ''}: {c['url']}"
-        for c in new
-    ]
     send(
         "New scan (paper trading only, not financial advice)\n\n"
         + explanation
-        + "\n\nAll new candidates:\n"
+        + "\n\nAll new candidates (AI = AI pick, RND = random pick):\n"
         + "\n".join(lines)
     )
 else:

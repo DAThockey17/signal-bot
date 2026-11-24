@@ -90,13 +90,17 @@
    "symbol": "PumpMeme",
    "entry_price": 0.001426,
    "picked": true,
-   "status": "open",
+   "status": "closed",
    "opened": 1795424318.0948548,
-   "last_price": 1.464e-06,
+   "last_price": 1.426e-06,
    "snaps": {
     "1h": -100.0,
-    "6h": -100.0
-   }
+    "6h": -100.0,
+    "24h": -100.0
+   },
+   "return_pct": -100.0,
+   "exit_price": 1.426e-06,
+   "closed": 1795541821.5295703
   },
   {
    "address": "8WW5B189mPntQQ85HTPvQNsYxXhQbAhdjXvZ6qaapump",
@@ -105,7 +109,7 @@
    "picked": true,
    "status": "open",
    "opened": 1795468622.513484,
-   "last_price": 1.435e-06,
+   "last_price": 1.44e-06,
    "snaps": {
     "1h": -100.0,
     "6h": -100.0
@@ -120,7 +124,8 @@
    "status": "open",
    "opened": 1795481607.9939106,
    "snaps": {
-    "1h": -77.07
+    "1h": -77.07,
+    "6h": -81.14
    },
    "liquidity": 37467.5,
    "volume_24h": 68337.09,
@@ -132,7 +137,7 @@
    "rug_score": 1,
    "danger_flags": [],
    "safe_core": true,
-   "last_price": 6.575e-08
+   "last_price": 5.544e-08
   },
   {
    "address": "3cL47ohWa2HApLYKtqPsqkjaxJ6HLvT5Ri1KvWdXpump",
@@ -142,7 +147,10 @@
    "picked": false,
    "status": "open",
    "opened": 1795497655.465165,
-   "snaps": {},
+   "snaps": {
+    "1h": -43.68,
+    "6h": -43.68
+   },
    "liquidity": 124375.25,
    "volume_24h": 1986695.29,
    "change_1h_pct": 29.35,
@@ -157,7 +165,8 @@
    "reject_reasons": [
     "overextended pump"
    ],
-   "safe_core": false
+   "safe_core": false,
+   "last_price": 0.001617
   }
  ],
  "last_report": 1795481608.8361585

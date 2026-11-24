@@ -92,7 +92,7 @@
    "picked": true,
    "status": "open",
    "opened": 1795424318.0948548,
-   "last_price": 1.5e-06,
+   "last_price": 1.464e-06,
    "snaps": {
     "1h": -100.0,
     "6h": -100.0
@@ -105,9 +105,10 @@
    "picked": true,
    "status": "open",
    "opened": 1795468622.513484,
-   "last_price": 1.448e-06,
+   "last_price": 1.435e-06,
    "snaps": {
-    "1h": -100.0
+    "1h": -100.0,
+    "6h": -100.0
    }
   },
   {
@@ -118,7 +119,9 @@
    "picked": true,
    "status": "open",
    "opened": 1795481607.9939106,
-   "snaps": {},
+   "snaps": {
+    "1h": -77.07
+   },
    "liquidity": 37467.5,
    "volume_24h": 68337.09,
    "change_1h_pct": 24.52,
@@ -128,7 +131,33 @@
    "age_hours": 1.7,
    "rug_score": 1,
    "danger_flags": [],
-   "safe_core": true
+   "safe_core": true,
+   "last_price": 6.575e-08
+  },
+  {
+   "address": "3cL47ohWa2HApLYKtqPsqkjaxJ6HLvT5Ri1KvWdXpump",
+   "symbol": "GROKIA",
+   "entry_price": 0.002726,
+   "group": "rejected",
+   "picked": false,
+   "status": "open",
+   "opened": 1795497655.465165,
+   "snaps": {},
+   "liquidity": 124375.25,
+   "volume_24h": 1986695.29,
+   "change_1h_pct": 29.35,
+   "change_24h_pct": 2381,
+   "buys_24h": 23880,
+   "sells_24h": 15471,
+   "age_hours": 3.1,
+   "fdv": 2717541,
+   "rug_score": null,
+   "danger_flags": null,
+   "roundtrip": null,
+   "reject_reasons": [
+    "overextended pump"
+   ],
+   "safe_core": false
   }
  ],
  "last_report": 1795481608.8361585

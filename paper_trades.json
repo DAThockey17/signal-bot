@@ -5,45 +5,85 @@
    "symbol": "OpenIndex",
    "entry_price": 0.00026,
    "picked": true,
-   "status": "open",
+   "status": "closed",
    "opened": 1795394254.6399782,
-   "last_price": 0.000208
+   "last_price": 0.0002638,
+   "snaps": {
+    "1h": -1.54,
+    "6h": -1.54,
+    "24h": -1.54
+   },
+   "return_pct": -1.54,
+   "exit_price": 0.0002638,
+   "closed": 1795481604.4297829
   },
   {
    "address": "7cFiqdT46zs7ooHWLFiLSaSQKLMibtokh9dBinsspump",
    "symbol": "UCASH",
    "entry_price": 0.001257,
    "picked": true,
-   "status": "open",
+   "status": "closed",
    "opened": 1795394254.63998,
-   "last_price": 0.00053
+   "last_price": 0.00133,
+   "snaps": {
+    "1h": 2.81,
+    "6h": 2.81,
+    "24h": 2.81
+   },
+   "return_pct": 2.81,
+   "exit_price": 0.00133,
+   "closed": 1795481604.4297829
   },
   {
    "address": "AQfw8J74V17erZsmMz4oK474eVLBaP44gD33vVbhtHo5",
    "symbol": "ZOL",
    "entry_price": 0.0002276,
    "picked": false,
-   "status": "open",
+   "status": "closed",
    "opened": 1795394254.6399813,
-   "last_price": 0.0001093
+   "last_price": 5.173e-05,
+   "snaps": {
+    "1h": -80.27,
+    "6h": -80.27,
+    "24h": -80.27
+   },
+   "return_pct": -80.27,
+   "exit_price": 5.173e-05,
+   "closed": 1795481604.4297829
   },
   {
    "address": "3BcJ4SSCfbxDMrWcUDucyCWxMjmy4M2ECCtvxu86pump",
    "symbol": "FSDV15",
    "entry_price": 0.0026,
    "picked": true,
-   "status": "open",
+   "status": "closed",
    "opened": 1795394254.639982,
-   "last_price": 1.526e-06
+   "last_price": 1.514e-06,
+   "snaps": {
+    "1h": -100.0,
+    "6h": -100.0,
+    "24h": -100.0
+   },
+   "return_pct": -100.0,
+   "exit_price": 1.514e-06,
+   "closed": 1795481604.4297829
   },
   {
    "address": "BAKsQrynzwadyACDMsg3J5R8a4CTvj1u7kEYyjq7pump",
    "symbol": "COPIUM",
    "entry_price": 0.0006141,
    "picked": false,
-   "status": "open",
+   "status": "closed",
    "opened": 1795394254.6399827,
-   "last_price": 0.0008069
+   "last_price": 0.00084,
+   "snaps": {
+    "1h": 33.79,
+    "6h": 33.79,
+    "24h": 33.79
+   },
+   "return_pct": 33.79,
+   "exit_price": 0.00084,
+   "closed": 1795481604.4297829
   },
   {
    "address": "93uamrbDerKbUh8MSjNF1wDtxYvEUD1CS9BcHn1apump",
@@ -52,7 +92,11 @@
    "picked": true,
    "status": "open",
    "opened": 1795424318.0948548,
-   "last_price": 0.0005075
+   "last_price": 1.5e-06,
+   "snaps": {
+    "1h": -100.0,
+    "6h": -100.0
+   }
   },
   {
    "address": "8WW5B189mPntQQ85HTPvQNsYxXhQbAhdjXvZ6qaapump",
@@ -60,8 +104,32 @@
    "entry_price": 0.0002631,
    "picked": true,
    "status": "open",
-   "opened": 1795468622.513484
+   "opened": 1795468622.513484,
+   "last_price": 1.448e-06,
+   "snaps": {
+    "1h": -100.0
+   }
+  },
+  {
+   "address": "A5euULARiF254xqxSqZ1bdC8zCGiKW2FRh2zYstWZWZs",
+   "symbol": "hamster",
+   "entry_price": 2.536e-07,
+   "group": "ai",
+   "picked": true,
+   "status": "open",
+   "opened": 1795481607.9939106,
+   "snaps": {},
+   "liquidity": 37467.5,
+   "volume_24h": 68337.09,
+   "change_1h_pct": 24.52,
+   "change_24h_pct": 233,
+   "buys_24h": 512,
+   "sells_24h": 278,
+   "age_hours": 1.7,
+   "rug_score": 1,
+   "danger_flags": [],
+   "safe_core": true
   }
  ],
- "last_report": 0
+ "last_report": 1795481608.8361585
 }

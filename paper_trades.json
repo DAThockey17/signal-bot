@@ -153,11 +153,12 @@
    "entry_price": 0.002726,
    "group": "rejected",
    "picked": false,
-   "status": "open",
+   "status": "closed",
    "opened": 1795497655.465165,
    "snaps": {
     "1h": -43.68,
-    "6h": -43.68
+    "6h": -43.68,
+    "24h": -94.0
    },
    "liquidity": 124375.25,
    "volume_24h": 1986695.29,
@@ -174,7 +175,10 @@
     "overextended pump"
    ],
    "safe_core": false,
-   "last_price": 0.002057
+   "last_price": 0.0002454,
+   "return_pct": -94.0,
+   "exit_price": 0.0002454,
+   "closed": 1795610745.2417123
   }
  ],
  "last_report": 1795573348.3316295

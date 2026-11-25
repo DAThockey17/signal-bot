@@ -107,13 +107,17 @@
    "symbol": "ChristmASS",
    "entry_price": 0.0002631,
    "picked": true,
-   "status": "open",
+   "status": "closed",
    "opened": 1795468622.513484,
-   "last_price": 1.44e-06,
+   "last_price": 1.463e-06,
    "snaps": {
     "1h": -100.0,
-    "6h": -100.0
-   }
+    "6h": -100.0,
+    "24h": -100.0
+   },
+   "return_pct": -100.0,
+   "exit_price": 1.463e-06,
+   "closed": 1795573347.7267635
   },
   {
    "address": "A5euULARiF254xqxSqZ1bdC8zCGiKW2FRh2zYstWZWZs",
@@ -121,11 +125,12 @@
    "entry_price": 2.536e-07,
    "group": "ai",
    "picked": true,
-   "status": "open",
+   "status": "closed",
    "opened": 1795481607.9939106,
    "snaps": {
     "1h": -77.07,
-    "6h": -81.14
+    "6h": -81.14,
+    "24h": -85.22
    },
    "liquidity": 37467.5,
    "volume_24h": 68337.09,
@@ -137,7 +142,10 @@
    "rug_score": 1,
    "danger_flags": [],
    "safe_core": true,
-   "last_price": 5.544e-08
+   "last_price": 4.51e-08,
+   "return_pct": -85.22,
+   "exit_price": 4.51e-08,
+   "closed": 1795573347.7267635
   },
   {
    "address": "3cL47ohWa2HApLYKtqPsqkjaxJ6HLvT5Ri1KvWdXpump",
@@ -166,8 +174,8 @@
     "overextended pump"
    ],
    "safe_core": false,
-   "last_price": 0.001617
+   "last_price": 0.002057
   }
  ],
- "last_report": 1795481608.8361585
+ "last_report": 1795573348.3316295
 }

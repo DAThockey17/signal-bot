@@ -9,7 +9,7 @@ CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
 
 LEDGER_FILE = "paper_trades.json"
 STRATEGY_FILE = "strategy.json"
-MIN_TOTAL = 60       # closed trades needed before searching for rules
+MIN_TOTAL = 60
 TRAIN_FRAC = 0.6
 MIN_TRAIN_N = 20
 MIN_TEST_N = 10
@@ -17,8 +17,11 @@ MAX_RULES = 3
 QUANTILES = [0.25, 0.5, 0.75]
 CHECKPOINTS = [1, 6, 24]
 FEATURES = [
-    "liquidity", "volume_24h", "change_1h_pct", "change_24h_pct", "age_hours",
-    "rug_score", "roundtrip", "vol_liq_ratio", "buy_sell_ratio", "liq_fdv",
+    "liquidity", "volume_24h", "change_1h_pct", "change_6h_pct", "change_24h_pct",
+    "age_hours", "rug_score", "roundtrip", "vol_liq_ratio", "buy_sell_ratio", "liq_fdv",
+    "has_website", "has_twitter", "has_telegram", "n_socials", "desc_len",
+    "narrative_coherence", "narrative_copycat", "n_flags",
+    "x_followers", "x_tweets", "x_age_days",
 ]
 
 
@@ -50,18 +53,15 @@ def ret_at(t, key):
 def features(t):
     liq, vol, fdv = t.get("liquidity"), t.get("volume_24h"), t.get("fdv")
     b, s = t.get("buys_24h"), t.get("sells_24h")
-    return {
-        "liquidity": liq,
-        "volume_24h": vol,
-        "change_1h_pct": t.get("change_1h_pct"),
-        "change_24h_pct": t.get("change_24h_pct"),
-        "age_hours": t.get("age_hours"),
-        "rug_score": t.get("rug_score"),
-        "roundtrip": t.get("roundtrip"),
+    f = {
         "vol_liq_ratio": vol / liq if liq and vol else None,
         "buy_sell_ratio": b / s if b is not None and s else None,
         "liq_fdv": liq / fdv if liq and fdv else None,
     }
+    for k in FEATURES:
+        if k not in f:
+            f[k] = t.get(k)
+    return f
 
 
 def stats(vals):
@@ -131,6 +131,23 @@ def pick_distinct(cands):
     return out
 
 
+def split_lines(title, rows, key_fn, min_n=5):
+    groups = {}
+    for r in rows:
+        k = key_fn(r["t"])
+        if k is not None:
+            groups.setdefault(k, []).append(r["ret"])
+    out = [title]
+    shown = False
+    for k, v in sorted(groups.items(), key=lambda kv: -len(kv[1])):
+        if len(v) >= min_n:
+            out.append(f"- {k}: {fmt(stats(v))}")
+            shown = True
+    if not shown:
+        out.append("- not enough data yet")
+    return out
+
+
 try:
     with open(LEDGER_FILE) as f:
         ledger = json.load(f)
@@ -157,10 +174,10 @@ if len(rows) >= MIN_TOTAL:
     near = pick_distinct([c for c in cands if c["beats"] and not c["profitable"]])
     lines.append(f"Baseline (train {n_tr}): {fmt(base_tr)}")
     lines.append(f"Baseline (test {n_te}): {fmt(base_te)}")
-    lines.append(f"Rules tried: {len(cands)}. Expect some to pass by luck, so these are hypotheses.")
+    lines.append(f"Rules tried: {len(cands)}. Some pass by luck, so treat them as hypotheses.")
     if approved:
         lines.append("")
-        lines.append("Approved rules (beat baseline in both periods and profitable in test):")
+        lines.append("Approved rules (beat baseline in both periods, profitable in test):")
         for c in approved:
             lines.append(f"- {c['name']}")
             lines.append(f"  train: {fmt(c['train'])}")
@@ -192,17 +209,31 @@ lines.append("Groups (24h, accepted tokens):")
 for name, g in (("AI picks", "ai"), ("Random picks", "random"), ("Other passed", "other")):
     vals = [r for t in trades if group_of(t) == g for r in [ret_at(t, "24h")] if r is not None]
     lines.append(f"- {name}: {fmt(stats(vals))}")
-
 rej = [r for t in trades if group_of(t) == "rejected" for r in [ret_at(t, "24h")] if r is not None]
 lines.append(f"- Rejected as risky: {fmt(stats(rej))}")
 
 lines.append("")
-lines.append("By source (accepted, 24h):")
-by_src = {}
-for r in rows:
-    by_src.setdefault(r["t"].get("source") or "unknown", []).append(r["ret"])
-for k, v in sorted(by_src.items(), key=lambda kv: -len(kv[1])):
-    lines.append(f"- {k}: {fmt(stats(v))}")
+lines += split_lines("By source (accepted, 24h):", rows, lambda t: t.get("source") or "unknown")
+
+lines.append("")
+lines += split_lines(
+    "By X link type:", rows,
+    lambda t: None if t.get("has_twitter") is None else (t.get("twitter_kind") or "no X link"),
+)
+lines.append("")
+lines += split_lines("By narrative category:", rows, lambda t: t.get("narrative_category"))
+lines.append("")
+lines += split_lines(
+    "Original vs copycat:", rows,
+    lambda t: None if t.get("narrative_copycat") is None else ("copycat" if t["narrative_copycat"] else "original"),
+)
+lines.append("")
+lines += split_lines(
+    "By coherence score:", rows,
+    lambda t: None if t.get("narrative_coherence") is None else (
+        "coherence 4-5" if t["narrative_coherence"] >= 4
+        else "coherence 3" if t["narrative_coherence"] == 3 else "coherence 1-2"),
+)
 
 lines.append("")
 lines.append("Holding time (accepted, avg return):")
@@ -213,13 +244,14 @@ for cp in CHECKPOINTS:
         parts.append(f"{cp}h {sum(vals) / len(vals):+.1f}% (n={len(vals)})")
 lines.append("- " + (" | ".join(parts) if parts else "no data yet"))
 
-matched = [r["ret"] for r in rows if r["t"].get("strategy_matched") is True]
-unmatched = [r["ret"] for r in rows if r["t"].get("strategy_matched") is False]
-if matched or unmatched:
-    lines.append("")
-    lines.append("Live test of learned rules (trades made after they existed):")
-    lines.append(f"- Matched: {fmt(stats(matched))}")
-    lines.append(f"- Not matched: {fmt(stats(unmatched))}")
+for label, key in (("Live test of learned rules", "strategy_matched"), ("Live test of backtest rules", "bt_matched")):
+    m = [r["ret"] for r in rows if r["t"].get(key) is True]
+    u = [r["ret"] for r in rows if r["t"].get(key) is False]
+    if m or u:
+        lines.append("")
+        lines.append(f"{label} (trades made after they existed):")
+        lines.append(f"- Matched: {fmt(stats(m))}")
+        lines.append(f"- Not matched: {fmt(stats(u))}")
 
 lines.append("")
 lines.append("Reminder: judge groups only after 30+ trades each.")

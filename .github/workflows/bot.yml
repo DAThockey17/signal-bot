@@ -2,7 +2,7 @@ name: bot
 on:
   workflow_dispatch:
   schedule:
-    - cron: "17 * * * *"
+   - cron: "7,37 * * * *"
 permissions:
   contents: write
 concurrency:

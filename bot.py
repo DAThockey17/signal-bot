@@ -12,34 +12,41 @@ LLM_KEY = os.environ["GROQ_API_KEY"].strip()
 LLM_URL = "https://api.groq.com/openai/v1/chat/completions"
 MODEL = "openai/gpt-oss-20b"
 
-# ---- Hard filters (tokens failing these are ignored) ----
+# ---- Hard filters (ignored if failed) ----
 MIN_LIQUIDITY = 25000
 MIN_VOLUME_24H = 50000
 MIN_VOL_LIQ_RATIO = 1.0
 MIN_AGE_HOURS = 3
-MAX_CANDIDATES = 12
+MAX_CANDIDATES = 20
+PER_SOURCE = 25
 
-# ---- Risk filters (tokens failing these are rejected but still tracked) ----
-MAX_DROP_1H = -25          # reject if price fell more than this % in 1h
-MAX_PUMP_24H = 500         # reject if up more than this % in 24h
-MAX_SELL_BUY_RATIO = 1.5   # reject if 24h sells > this x buys
-MIN_LIQ_TO_FDV = 0.02      # liquidity must be at least this fraction of FDV
-MAX_RUG_SCORE = 40         # RugCheck normalised score (higher = riskier)
-IGNORE_DANGER = []         # RugCheck danger names you choose to tolerate
+# ---- Risk filters (rejected but still tracked) ----
+MAX_DROP_1H = -25
+MAX_PUMP_24H = 500
+MAX_SELL_BUY_RATIO = 1.5
+MIN_LIQ_TO_FDV = 0.02
+MAX_RUG_SCORE = 40
+IGNORE_DANGER = []
 CHECK_SELL_ROUTE = True
-MIN_ROUNDTRIP = 0.80       # buy then sell must return at least this fraction
+MIN_ROUNDTRIP = 0.80
 PROBE_SOL = 0.5
 
 # ---- Picks and paper trading ----
 MAX_AI_PICKS = 3
 MAX_RANDOM_PICKS = 3
 LEDGER_FILE = "paper_trades.json"
-TRADE_SIZE = 100
+STRATEGY_FILE = "strategy.json"
 FEE_PCT = 3.0
 CHECKPOINTS = [1, 6, 24]
 
 SOL = "So11111111111111111111111111111111111111112"
 QUOTE_URL = "https://lite-api.jup.ag/swap/v1/quote"
+SOURCES = {
+    "profiles": "https://api.dexscreener.com/token-profiles/latest/v1",
+    "profile_updates": "https://api.dexscreener.com/token-profiles/recent-updates/v1",
+    "boosts_latest": "https://api.dexscreener.com/token-boosts/latest/v1",
+    "boosts_top": "https://api.dexscreener.com/token-boosts/top/v1",
+}
 
 
 def get_json(url):
@@ -61,15 +68,75 @@ def save_ledger(ledger):
         json.dump(ledger, f, indent=1)
 
 
+def load_strategy():
+    try:
+        with open(STRATEGY_FILE) as f:
+            return json.load(f)
+    except Exception:
+        return {"rules": [], "context": "", "generated": None}
+
+
+def feature_dict(c):
+    liq, vol, fdv = c.get("liquidity"), c.get("volume_24h"), c.get("fdv")
+    b, s = c.get("buys_24h"), c.get("sells_24h")
+    return {
+        "liquidity": liq,
+        "volume_24h": vol,
+        "change_1h_pct": c.get("change_1h_pct"),
+        "change_24h_pct": c.get("change_24h_pct"),
+        "age_hours": c.get("age_hours"),
+        "rug_score": (c.get("rug") or {}).get("score"),
+        "roundtrip": (c.get("sell") or {}).get("roundtrip"),
+        "vol_liq_ratio": vol / liq if liq and vol else None,
+        "buy_sell_ratio": b / s if b is not None and s else None,
+        "liq_fdv": liq / fdv if liq and fdv else None,
+    }
+
+
+def matched_rules(c, strategy):
+    f = feature_dict(c)
+    out = []
+    for r in strategy.get("rules", []):
+        v = f.get(r["feature"])
+        if v is None:
+            continue
+        if (r["op"] == ">=" and v >= r["threshold"]) or (r["op"] == "<=" and v <= r["threshold"]):
+            out.append(r["name"])
+    return out
+
+
 def find_candidates():
-    profiles = get_json("https://api.dexscreener.com/token-profiles/latest/v1")
-    addrs = [p["tokenAddress"] for p in profiles if p.get("chainId") == "solana"][:30]
+    src = {}
+    for name, url in SOURCES.items():
+        try:
+            resp = get_json(url)
+        except Exception as e:
+            print(f"Source {name} failed: {e}")
+            continue
+        if isinstance(resp, dict):
+            resp = [resp]
+        count = 0
+        for p in resp:
+            a = p.get("tokenAddress")
+            if p.get("chainId") == "solana" and a:
+                src.setdefault(a, name)
+                count += 1
+                if count >= PER_SOURCE:
+                    break
+    addrs = list(src)
     if not addrs:
         return []
-    data = get_json("https://api.dexscreener.com/latest/dex/tokens/" + ",".join(addrs))
+    pairs = []
+    for i in range(0, len(addrs), 30):
+        try:
+            data = get_json("https://api.dexscreener.com/latest/dex/tokens/" + ",".join(addrs[i:i + 30]))
+        except Exception as e:
+            print("Pair lookup failed:", e)
+            continue
+        pairs += data.get("pairs") or []
     now_ms = time.time() * 1000
     best = {}
-    for p in data.get("pairs") or []:
+    for p in pairs:
         if p.get("chainId") != "solana":
             continue
         liq = (p.get("liquidity") or {}).get("usd") or 0
@@ -100,6 +167,7 @@ def find_candidates():
             "sells_24h": tx.get("sells"),
             "age_hours": age,
             "fdv": p.get("fdv"),
+            "source": src.get(addr),
             "url": p.get("url"),
         }
     return sorted(best.values(), key=lambda c: c["volume_24h"], reverse=True)
@@ -226,7 +294,7 @@ def update_trades(ledger):
             if age_h < cp or key in snaps:
                 continue
             if not price and age_h < cp + 3:
-                continue  # retry on a later run
+                continue
             snaps[key] = calc_return(price, t["entry_price"])
         if "24h" in snaps:
             t["status"] = "closed"
@@ -252,7 +320,7 @@ def ask_llm(prompt):
 def send(text):
     r = requests.post(
         f"https://api.telegram.org/bot{TOKEN}/sendMessage",
-        json={"chat_id": CHAT_ID, "text": text, "disable_web_page_preview": True},
+        json={"chat_id": CHAT_ID, "text": text[:4000], "disable_web_page_preview": True},
         timeout=15,
     )
     if r.status_code != 200:
@@ -267,54 +335,10 @@ def parse_picks(text, valid_ids):
     return set(ids[:MAX_AI_PICKS])
 
 
-def group_of(t):
-    g = t.get("group") or ("ai" if t.get("picked") else "other")
-    if g == "other" and t.get("safe_core") is False:
-        return "rejected"
-    return g
-
-
-def ret_at(t, key):
-    if key in t.get("snaps", {}):
-        return t["snaps"][key]
-    if key == "24h" and t.get("status") == "closed" and "return_pct" in t:
-        return t["return_pct"]
-    return None
-
-
-def fmt_group(name, trades):
-    parts = []
-    for cp in CHECKPOINTS:
-        vals = [v for v in (ret_at(t, f"{cp}h") for t in trades) if v is not None]
-        if vals:
-            win = sum(1 for v in vals if v > 0) / len(vals) * 100
-            parts.append(f"{cp}h {sum(vals) / len(vals):+.1f}% (win {win:.0f}%, n={len(vals)})")
-    return f"{name}: " + (" | ".join(parts) if parts else "no data yet")
-
-
-def build_report(ledger):
-    trades = ledger["trades"]
-    open_count = sum(1 for t in trades if t["status"] == "open")
-    groups = {g: [t for t in trades if group_of(t) == g] for g in ("ai", "random", "other", "rejected")}
-    ai_closed = [t for t in groups["ai"] if t["status"] == "closed"]
-    pnl = sum(TRADE_SIZE * t["return_pct"] / 100 for t in ai_closed)
-    return (
-        "Daily paper-trading report (pretend money, not advice)\n"
-        "Average return per trade after assumed costs\n\n"
-        f"Open trades: {open_count}\n"
-        + fmt_group("AI picks", groups["ai"]) + "\n"
-        + fmt_group("Random picks", groups["random"]) + "\n"
-        + fmt_group("Other (passed filters)", groups["other"]) + "\n"
-        + fmt_group("Rejected as risky (shadow)", groups["rejected"]) + "\n\n"
-        f"Paper P&L on closed AI picks (${TRADE_SIZE} each): ${pnl:+.2f}\n"
-        "If Rejected does clearly worse than the passed groups, the filters are working. "
-        "Wait for 30+ trades per group."
-    )
-
-
-def add_trade(ledger, c, group, reasons):
+def add_trade(ledger, c, group, reasons, strategy):
     rug = c.get("rug") or {}
     sell = c.get("sell") or {}
+    has_strat = "strategy_rules" in c
     ledger["trades"].append({
         "address": c["address"],
         "symbol": c["symbol"],
@@ -324,6 +348,7 @@ def add_trade(ledger, c, group, reasons):
         "status": "open",
         "opened": time.time(),
         "snaps": {},
+        "source": c.get("source"),
         "liquidity": c["liquidity"],
         "volume_24h": c["volume_24h"],
         "change_1h_pct": c["change_1h_pct"],
@@ -337,11 +362,15 @@ def add_trade(ledger, c, group, reasons):
         "roundtrip": sell.get("roundtrip"),
         "reject_reasons": reasons,
         "safe_core": not reasons,
+        "strategy_matched": bool(c["strategy_rules"]) if has_strat else None,
+        "strategy_rules": c.get("strategy_rules"),
+        "strategy_gen": strategy.get("generated") if has_strat else None,
     })
 
 
 ledger = load_ledger()
 update_trades(ledger)
+strategy = load_strategy()
 
 seen = {t["address"] for t in ledger["trades"]}
 new = [c for c in find_candidates() if c["address"] not in seen][:MAX_CANDIDATES]
@@ -371,6 +400,7 @@ for c in new:
 
 for i, c in enumerate(accepted, start=1):
     c["id"] = i
+    c["strategy_rules"] = matched_rules(c, strategy)
 
 ai_ids = set()
 explanation = ""
@@ -379,6 +409,7 @@ if accepted:
         {
             "id": c["id"],
             "symbol": c["symbol"],
+            "source": c.get("source"),
             "price_usd": c["price_usd"],
             "liquidity": c["liquidity"],
             "volume_24h": c["volume_24h"],
@@ -389,9 +420,16 @@ if accepted:
             "age_hours": c["age_hours"],
             "rugcheck_risk_score": (c.get("rug") or {}).get("score"),
             "sell_roundtrip": (c.get("sell") or {}).get("roundtrip"),
+            "matches_learned_strategy": bool(c["strategy_rules"]),
         }
         for c in accepted
     ]
+    ctx = strategy.get("context") or ""
+    notes = (
+        "Notes from this bot's own paper-trading history (small sample, may be noise; "
+        "use only as a tie-breaker): " + ctx + "\n\n"
+        if ctx else ""
+    )
     prompt = (
         "You are a cautious crypto market analyst. Below is JSON data on new Solana tokens "
         "that already passed rug-pull screening, each with an id. Choose up to 3 that look "
@@ -399,6 +437,7 @@ if accepted:
         "facts. Your reply must start with one line in exactly this format: PICKS: 2, 5 "
         "(the chosen ids, or PICKS: none). Then give one short line per pick with the "
         "symbol, the key reason, and the main risk. Keep it under 120 words.\n\n"
+        + notes
         + json.dumps(view)
     )
     analysis = ask_llm(prompt)
@@ -411,35 +450,31 @@ random_ids = {c["id"] for c in random.sample(pool, min(MAX_RANDOM_PICKS, len(poo
 lines = []
 for c in accepted:
     group = "ai" if c["id"] in ai_ids else "random" if c["id"] in random_ids else "other"
-    add_trade(ledger, c, group, [])
+    add_trade(ledger, c, group, [], strategy)
     tag = {"ai": "AI", "random": "RND", "other": "-"}[group]
+    if c["strategy_rules"]:
+        tag += " +S"
     lines.append(f"{c['id']}. {c['symbol']} [{tag}]: {c['url']}")
 for c in rejected:
-    add_trade(ledger, c, "rejected", c["reasons"])
+    add_trade(ledger, c, "rejected", c["reasons"], strategy)
 save_ledger(ledger)
 
 if accepted:
     why = Counter(label for c in rejected for label in c["reasons"])
-    skipped_note = ""
+    note = ""
     if rejected:
-        skipped_note = (
+        note = (
             f"\n\nRejected {len(rejected)} risky: "
             + ", ".join(f"{k} x{v}" for k, v in why.most_common(5))
         )
     send(
         "New scan (paper trading only, not financial advice)\n\n"
         + explanation
-        + "\n\nPassed screening (AI = AI pick, RND = random pick):\n"
+        + "\n\nPassed screening (AI = AI pick, RND = random pick, +S = matches learned rule):\n"
         + "\n".join(lines)
-        + skipped_note
+        + note
     )
 else:
     print(f"No tokens passed screening. Rejected: {len(rejected)}, skipped (lookup failed): {skipped}")
-
-has_closed = any(t["status"] == "closed" for t in ledger["trades"])
-if has_closed and time.time() - ledger["last_report"] >= 24 * 3600:
-    send(build_report(ledger))
-    ledger["last_report"] = time.time()
-    save_ledger(ledger)
 
 print("Done.")

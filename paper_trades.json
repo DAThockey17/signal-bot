@@ -188,11 +188,12 @@
    "entry_price": 0.002752,
    "group": "ai",
    "picked": true,
-   "status": "open",
+   "status": "closed",
    "opened": 1795639942.6418545,
    "snaps": {
     "1h": -24.98,
-    "6h": -24.98
+    "6h": -24.98,
+    "24h": -50.38
    },
    "source": "boosts_latest",
    "liquidity": 180910.43,
@@ -232,7 +233,10 @@
    "strategy_gen": 1795639795.9606187,
    "bt_matched": false,
    "bt_rules": [],
-   "last_price": 0.001997
+   "last_price": 0.001448,
+   "return_pct": -50.38,
+   "exit_price": 0.001448,
+   "closed": 1795729981.5663726
   },
   {
    "address": "GexThZHgaswpAQ7Fi8QrHFubjPimUNSYhJiAA7XZpump",
@@ -242,11 +246,12 @@
    "entry_price": 0.0008797,
    "group": "random",
    "picked": false,
-   "status": "open",
+   "status": "closed",
    "opened": 1795639942.6418731,
    "snaps": {
     "1h": -7.35,
-    "6h": -7.35
+    "6h": -7.35,
+    "24h": -10.31
    },
    "source": "boosts_top",
    "liquidity": 92195.47,
@@ -287,7 +292,10 @@
    "strategy_gen": 1795639795.9606187,
    "bt_matched": false,
    "bt_rules": [],
-   "last_price": 0.0008323
+   "last_price": 0.0008154,
+   "return_pct": -10.31,
+   "exit_price": 0.0008154,
+   "closed": 1795729981.5663726
   },
   {
    "address": "DtcicPCKTKeAh7TDEzTym3hXeoHAoMiBdYJhMYxZpump",
@@ -297,11 +305,12 @@
    "entry_price": 0.005385,
    "group": "ai",
    "picked": true,
-   "status": "open",
+   "status": "closed",
    "opened": 1795639942.641885,
    "snaps": {
     "1h": 7.08,
-    "6h": 7.08
+    "6h": 7.08,
+    "24h": 15.22
    },
    "source": "boosts_top",
    "liquidity": 261092.54,
@@ -339,7 +348,10 @@
    "strategy_gen": 1795639795.9606187,
    "bt_matched": false,
    "bt_rules": [],
-   "last_price": 0.006267
+   "last_price": 0.006366,
+   "return_pct": 15.22,
+   "exit_price": 0.006366,
+   "closed": 1795729981.5663726
   },
   {
    "address": "8e2NgKkbT3vrJSopJArakwnS4oWhy4Ks75Enj1F3pump",
@@ -404,11 +416,12 @@
    "entry_price": 0.0006364,
    "group": "random",
    "picked": false,
-   "status": "open",
+   "status": "closed",
    "opened": 1795639942.6418998,
    "snaps": {
     "1h": -14.46,
-    "6h": -14.46
+    "6h": -14.46,
+    "24h": -37.55
    },
    "source": "boosts_latest",
    "liquidity": 101625,
@@ -448,7 +461,10 @@
    "strategy_gen": 1795639795.9606187,
    "bt_matched": false,
    "bt_rules": [],
-   "last_price": 0.0005579
+   "last_price": 0.0004165,
+   "return_pct": -37.55,
+   "exit_price": 0.0004165,
+   "closed": 1795729981.5663726
   },
   {
    "address": "6C9r2gzu8Pr54hTevHo3x5gSj9JqtpApj7obJnrtpump",
@@ -458,11 +474,12 @@
    "entry_price": 0.0007912,
    "group": "ai",
    "picked": true,
-   "status": "open",
+   "status": "closed",
    "opened": 1795639942.6419063,
    "snaps": {
     "1h": 3.84,
-    "6h": 3.84
+    "6h": 3.84,
+    "24h": 13.1
    },
    "source": "boosts_latest",
    "liquidity": 84726.27,
@@ -502,7 +519,10 @@
    "strategy_gen": 1795639795.9606187,
    "bt_matched": false,
    "bt_rules": [],
-   "last_price": 0.0008165
+   "last_price": 0.0009186,
+   "return_pct": 13.1,
+   "exit_price": 0.0009186,
+   "closed": 1795729981.5663726
   },
   {
    "address": "5EmvWDizkpjAXbcfCcVq69w1id8GaLzi4LLwtuSgpump",
@@ -512,11 +532,12 @@
    "entry_price": 0.0004347,
    "group": "rejected",
    "picked": false,
-   "status": "open",
+   "status": "closed",
    "opened": 1795639942.641913,
    "snaps": {
     "1h": -68.84,
-    "6h": -68.84
+    "6h": -68.84,
+    "24h": -96.88
    },
    "source": "boosts_latest",
    "liquidity": 53354.79,
@@ -556,7 +577,10 @@
    "strategy_gen": null,
    "bt_matched": null,
    "bt_rules": null,
-   "last_price": 5.847e-05
+   "last_price": 2.661e-05,
+   "return_pct": -96.88,
+   "exit_price": 2.661e-05,
+   "closed": 1795729981.5663726
   },
   {
    "address": "H4eqZumNhGk7LKLB5QpJb84EYZ1yHbEg9HiwwLqkpump",
@@ -620,11 +644,12 @@
    "entry_price": 0.0002424,
    "group": "rejected",
    "picked": false,
-   "status": "open",
+   "status": "closed",
    "opened": 1795639942.6419241,
    "snaps": {
     "1h": -100.0,
-    "6h": -100.0
+    "6h": -100.0,
+    "24h": -100.0
    },
    "source": "profiles",
    "liquidity": 34263.66,
@@ -664,7 +689,10 @@
    "strategy_gen": null,
    "bt_matched": null,
    "bt_rules": null,
-   "last_price": 1.384e-06
+   "last_price": 1.418e-06,
+   "return_pct": -100.0,
+   "exit_price": 1.418e-06,
+   "closed": 1795729981.5663726
   },
   {
    "address": "npz2FhoufQ7pKqhGpaipYWacrAkidyW2yDpVWSvpump",
@@ -674,11 +702,12 @@
    "entry_price": 0.000731,
    "group": "rejected",
    "picked": false,
-   "status": "open",
+   "status": "closed",
    "opened": 1795639942.6419287,
    "snaps": {
     "1h": -9.09,
-    "6h": -9.09
+    "6h": -9.09,
+    "24h": -32.32
    },
    "source": "boosts_latest",
    "liquidity": 80220.88,
@@ -718,7 +747,10 @@
    "strategy_gen": null,
    "bt_matched": null,
    "bt_rules": null,
-   "last_price": 0.0006986
+   "last_price": 0.0005167,
+   "return_pct": -32.32,
+   "exit_price": 0.0005167,
+   "closed": 1795729981.5663726
   },
   {
    "address": "9msLfYfXBrSbrApCZAPuPMCNmPqNtEL1VPKh1AEYpump",
@@ -774,7 +806,7 @@
    "strategy_gen": 1795639795.9606187,
    "bt_matched": false,
    "bt_rules": [],
-   "last_price": 0.0001767
+   "last_price": 0.0002019
   },
   {
    "address": "6HS1aeSk7osT5B1CzLp1HTRTAweFr5wurfMHS4vppump",
@@ -828,7 +860,7 @@
    "strategy_gen": null,
    "bt_matched": null,
    "bt_rules": null,
-   "last_price": 0.0003752
+   "last_price": 1.544e-06
   },
   {
    "address": "3gmFG4sFDJErDV8pacFrL2uUPXeGJTYLjfRy4hFypump",
@@ -882,7 +914,7 @@
    "strategy_gen": null,
    "bt_matched": null,
    "bt_rules": null,
-   "last_price": 0.0005458
+   "last_price": 1.648e-06
   },
   {
    "address": "Bnw5JRPek5JvJhzUiB9yrs2cmzt4bLeFqSRzDzSppump",
@@ -936,7 +968,7 @@
    "strategy_gen": null,
    "bt_matched": null,
    "bt_rules": null,
-   "last_price": 0.001633
+   "last_price": 1.521e-06
   },
   {
    "address": "ANvsL4A6tJKAXJsPg7XVSHQA7KYmFcpW42jPuhVtpump",
@@ -990,7 +1022,7 @@
    "strategy_gen": null,
    "bt_matched": null,
    "bt_rules": null,
-   "last_price": 0.0001907
+   "last_price": 0.0001384
   },
   {
    "address": "Fo2HAwr7ZAUM2bSZ7MWSi16e3aWGpbw5MsUDYCttpump",
@@ -1044,7 +1076,7 @@
    "strategy_gen": null,
    "bt_matched": null,
    "bt_rules": null,
-   "last_price": 0.009102
+   "last_price": 0.009526
   },
   {
    "address": "9QT8K685Hrae4k11dhGXirdtpfAaimExtyfwt8cPpump",
@@ -1056,7 +1088,10 @@
    "picked": true,
    "status": "open",
    "opened": 1795695414.1322773,
-   "snaps": {},
+   "snaps": {
+    "1h": -0.87,
+    "6h": -0.87
+   },
    "source": "boosts_latest",
    "liquidity": 59050.3,
    "volume_24h": 909960.12,
@@ -1094,7 +1129,8 @@
    "strategy_rules": [],
    "strategy_gen": 1795639795.9606187,
    "bt_matched": false,
-   "bt_rules": []
+   "bt_rules": [],
+   "last_price": 0.000254
   },
   {
    "address": "9Pq7aLAbhDG2tTnS22cm6kuysZVcZpLFE368HWuypump",
@@ -1106,7 +1142,10 @@
    "picked": false,
    "status": "open",
    "opened": 1795695414.1323001,
-   "snaps": {},
+   "snaps": {
+    "1h": -5.56,
+    "6h": -5.56
+   },
    "source": "profile_updates",
    "liquidity": 137125.87,
    "volume_24h": 334629.19,
@@ -1145,7 +1184,8 @@
    "strategy_rules": [],
    "strategy_gen": 1795639795.9606187,
    "bt_matched": false,
-   "bt_rules": []
+   "bt_rules": [],
+   "last_price": 0.001637
   },
   {
    "address": "4kjruqGHDsSqkMdFfCjV7Vb62HPFhtXyWc2t6JpQzDnz",
@@ -1157,7 +1197,10 @@
    "picked": true,
    "status": "open",
    "opened": 1795695414.132313,
-   "snaps": {},
+   "snaps": {
+    "1h": -16.5,
+    "6h": -16.5
+   },
    "source": "boosts_latest",
    "liquidity": 210969.9,
    "volume_24h": 254429,
@@ -1197,7 +1240,8 @@
    "strategy_rules": [],
    "strategy_gen": 1795639795.9606187,
    "bt_matched": false,
-   "bt_rules": []
+   "bt_rules": [],
+   "last_price": 0.002146
   },
   {
    "address": "ngwxpGYdkauMcxLFrNTKp8qBgK7JV53zVvd7F2spump",
@@ -1209,7 +1253,10 @@
    "picked": false,
    "status": "open",
    "opened": 1795695414.1323235,
-   "snaps": {},
+   "snaps": {
+    "1h": 5.66,
+    "6h": 5.66
+   },
    "source": "profile_updates",
    "liquidity": 51176.71,
    "volume_24h": 158629.02,
@@ -1247,7 +1294,8 @@
    "strategy_rules": [],
    "strategy_gen": 1795639795.9606187,
    "bt_matched": false,
-   "bt_rules": []
+   "bt_rules": [],
+   "last_price": 0.0004127
   },
   {
    "address": "7cPKubouxwsSy4aAKHtDKUETZ6uxVZDntRuy7Cappump",
@@ -1259,7 +1307,10 @@
    "picked": false,
    "status": "open",
    "opened": 1795695414.1323318,
-   "snaps": {},
+   "snaps": {
+    "1h": -7.34,
+    "6h": -7.34
+   },
    "source": "profile_updates",
    "liquidity": 29595.59,
    "volume_24h": 91034.11,
@@ -1295,7 +1346,208 @@
    "strategy_rules": [],
    "strategy_gen": 1795639795.9606187,
    "bt_matched": false,
+   "bt_rules": [],
+   "last_price": 0.000174
+  },
+  {
+   "address": "38M2z4UCfZEkUHFzD48vhKQhFhNyRGto8pZbLjNipump",
+   "symbol": "JIMMY",
+   "name": "Jimmy Rustles",
+   "description": "",
+   "entry_price": 0.000484,
+   "group": "ai",
+   "picked": true,
+   "status": "open",
+   "opened": 1795729992.6302242,
+   "snaps": {},
+   "source": "boosts_latest",
+   "liquidity": 63134.32,
+   "volume_24h": 1536314.91,
+   "change_1h_pct": -17.04,
+   "change_6h_pct": -56.56,
+   "change_24h_pct": -39.31,
+   "buys_24h": 14426,
+   "sells_24h": 11805,
+   "age_hours": 72.7,
+   "fdv": 451968,
+   "rug_score": 1,
+   "danger_flags": [],
+   "roundtrip": 0.987,
+   "has_website": 1,
+   "has_twitter": 1,
+   "has_telegram": 0,
+   "has_discord": 0,
+   "twitter_kind": "post",
+   "twitter_handle": "jimmyrustlessol",
+   "n_socials": 2,
+   "desc_len": 0,
+   "narrative_category": "other",
+   "narrative_coherence": 1,
+   "narrative_copycat": 0,
+   "narrative_flags": [
+    "no_description"
+   ],
+   "n_flags": 1,
+   "x_followers": null,
+   "x_tweets": null,
+   "x_age_days": null,
+   "reject_reasons": [],
+   "safe_core": true,
+   "strategy_matched": false,
+   "strategy_rules": [],
+   "strategy_gen": 1795728157.513252,
+   "bt_matched": false,
    "bt_rules": []
+  },
+  {
+   "address": "PgFtGGquvnv2zEkjG2N2QPvBTBrafuExGYEqahRpump",
+   "symbol": "BRUH",
+   "name": "The Bruhvengers",
+   "description": "Even superheroes have bad days. **$BRUH \u2014 The Bruhvengers** is a meme narrative inspired by the public exchanges between Elon Musk and CZ, reimagining two of crypto and tech's most recognizable figures as a completely exhausted superhero duo. Now, we have Jensen Huang in the team.",
+   "entry_price": 0.008136,
+   "group": "ai",
+   "picked": true,
+   "status": "open",
+   "opened": 1795729992.6302433,
+   "snaps": {},
+   "source": "boosts_latest",
+   "liquidity": 223350.12,
+   "volume_24h": 1459749.34,
+   "change_1h_pct": -3.21,
+   "change_6h_pct": 3.58,
+   "change_24h_pct": 14.26,
+   "buys_24h": 4574,
+   "sells_24h": 3656,
+   "age_hours": 473.4,
+   "fdv": 8055367,
+   "rug_score": 1,
+   "danger_flags": [],
+   "roundtrip": 0.993,
+   "has_website": 1,
+   "has_twitter": 1,
+   "has_telegram": 0,
+   "has_discord": 0,
+   "twitter_kind": "profile",
+   "twitter_handle": "bruhvengersfun",
+   "n_socials": 2,
+   "desc_len": 281,
+   "narrative_category": "internet_meme",
+   "narrative_coherence": 4,
+   "narrative_copycat": 1,
+   "narrative_flags": [
+    "copycat_name"
+   ],
+   "n_flags": 1,
+   "x_followers": null,
+   "x_tweets": null,
+   "x_age_days": null,
+   "reject_reasons": [],
+   "safe_core": true,
+   "strategy_matched": false,
+   "strategy_rules": [],
+   "strategy_gen": 1795728157.513252,
+   "bt_matched": false,
+   "bt_rules": []
+  },
+  {
+   "address": "CFX1gH7CKYwqYXrfDkS2MUxJcEhs8PT63DyRA1chpump",
+   "symbol": "Hoppy",
+   "name": "Hoppy",
+   "description": "Nasa just leaked the SpaceX character they used to spam on X, SpaceX Starhopper \"Hoppy\" 9.5\" Plushie.",
+   "entry_price": 0.001585,
+   "group": "rejected",
+   "picked": false,
+   "status": "open",
+   "opened": 1795729992.6302543,
+   "snaps": {},
+   "source": "profiles",
+   "liquidity": 91951.7,
+   "volume_24h": 1114741.32,
+   "change_1h_pct": 467,
+   "change_6h_pct": 3933,
+   "change_24h_pct": 3933,
+   "buys_24h": 24434,
+   "sells_24h": 6128,
+   "age_hours": 1.3,
+   "fdv": 1585241,
+   "rug_score": null,
+   "danger_flags": null,
+   "roundtrip": null,
+   "has_website": 1,
+   "has_twitter": 1,
+   "has_telegram": 0,
+   "has_discord": 0,
+   "twitter_kind": "profile",
+   "twitter_handle": "hoppymeme",
+   "n_socials": 2,
+   "desc_len": 101,
+   "narrative_category": null,
+   "narrative_coherence": null,
+   "narrative_copycat": null,
+   "narrative_flags": null,
+   "n_flags": null,
+   "x_followers": null,
+   "x_tweets": null,
+   "x_age_days": null,
+   "reject_reasons": [
+    "overextended pump"
+   ],
+   "safe_core": false,
+   "strategy_matched": null,
+   "strategy_rules": null,
+   "strategy_gen": null,
+   "bt_matched": null,
+   "bt_rules": null
+  },
+  {
+   "address": "Bb38n8AVLMh9amo8qtjLvqE8nPtfs8GEsyzg1pC6pump",
+   "symbol": "Cateball",
+   "name": "Cateball",
+   "description": "kept in cold storage since day 1. never melts, never sells",
+   "entry_price": 0.001021,
+   "group": "rejected",
+   "picked": false,
+   "status": "open",
+   "opened": 1795729992.6302614,
+   "snaps": {},
+   "source": "profiles",
+   "liquidity": 72117.64,
+   "volume_24h": 656283.61,
+   "change_1h_pct": 2748,
+   "change_6h_pct": 2748,
+   "change_24h_pct": 2748,
+   "buys_24h": 8221,
+   "sells_24h": 3412,
+   "age_hours": 0.7,
+   "fdv": 1021615,
+   "rug_score": null,
+   "danger_flags": null,
+   "roundtrip": null,
+   "has_website": 1,
+   "has_twitter": 1,
+   "has_telegram": 0,
+   "has_discord": 0,
+   "twitter_kind": "profile",
+   "twitter_handle": "thecateball",
+   "n_socials": 2,
+   "desc_len": 58,
+   "narrative_category": null,
+   "narrative_coherence": null,
+   "narrative_copycat": null,
+   "narrative_flags": null,
+   "n_flags": null,
+   "x_followers": null,
+   "x_tweets": null,
+   "x_age_days": null,
+   "reject_reasons": [
+    "overextended pump"
+   ],
+   "safe_core": false,
+   "strategy_matched": null,
+   "strategy_rules": null,
+   "strategy_gen": null,
+   "bt_matched": null,
+   "bt_rules": null
   }
  ],
  "last_report": 1795573348.3316295

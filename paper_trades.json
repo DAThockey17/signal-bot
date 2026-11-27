@@ -1118,11 +1118,12 @@
    "entry_price": 0.0002487,
    "group": "ai",
    "picked": true,
-   "status": "open",
+   "status": "closed",
    "opened": 1795695414.1322773,
    "snaps": {
     "1h": -0.87,
-    "6h": -0.87
+    "6h": -0.87,
+    "24h": 8.78
    },
    "source": "boosts_latest",
    "liquidity": 59050.3,
@@ -1162,7 +1163,10 @@
    "strategy_gen": 1795639795.9606187,
    "bt_matched": false,
    "bt_rules": [],
-   "last_price": 0.0002502
+   "last_price": 0.000278,
+   "return_pct": 8.78,
+   "exit_price": 0.000278,
+   "closed": 1795787158.1654272
   },
   {
    "address": "9Pq7aLAbhDG2tTnS22cm6kuysZVcZpLFE368HWuypump",
@@ -1172,11 +1176,12 @@
    "entry_price": 0.00168,
    "group": "random",
    "picked": false,
-   "status": "open",
+   "status": "closed",
    "opened": 1795695414.1323001,
    "snaps": {
     "1h": -5.56,
-    "6h": -5.56
+    "6h": -5.56,
+    "24h": 2.12
    },
    "source": "profile_updates",
    "liquidity": 137125.87,
@@ -1217,7 +1222,10 @@
    "strategy_gen": 1795639795.9606187,
    "bt_matched": false,
    "bt_rules": [],
-   "last_price": 0.001848
+   "last_price": 0.001766,
+   "return_pct": 2.12,
+   "exit_price": 0.001766,
+   "closed": 1795787158.1654272
   },
   {
    "address": "4kjruqGHDsSqkMdFfCjV7Vb62HPFhtXyWc2t6JpQzDnz",
@@ -1227,11 +1235,12 @@
    "entry_price": 0.002481,
    "group": "ai",
    "picked": true,
-   "status": "open",
+   "status": "closed",
    "opened": 1795695414.132313,
    "snaps": {
     "1h": -16.5,
-    "6h": -16.5
+    "6h": -16.5,
+    "24h": -26.3
    },
    "source": "boosts_latest",
    "liquidity": 210969.9,
@@ -1273,7 +1282,10 @@
    "strategy_gen": 1795639795.9606187,
    "bt_matched": false,
    "bt_rules": [],
-   "last_price": 0.001914
+   "last_price": 0.001903,
+   "return_pct": -26.3,
+   "exit_price": 0.001903,
+   "closed": 1795787158.1654272
   },
   {
    "address": "ngwxpGYdkauMcxLFrNTKp8qBgK7JV53zVvd7F2spump",
@@ -1283,11 +1295,12 @@
    "entry_price": 0.0003798,
    "group": "random",
    "picked": false,
-   "status": "open",
+   "status": "closed",
    "opened": 1795695414.1323235,
    "snaps": {
     "1h": 5.66,
-    "6h": 5.66
+    "6h": 5.66,
+    "24h": -20.46
    },
    "source": "profile_updates",
    "liquidity": 51176.71,
@@ -1327,7 +1340,10 @@
    "strategy_gen": 1795639795.9606187,
    "bt_matched": false,
    "bt_rules": [],
-   "last_price": 0.0003547
+   "last_price": 0.0003135,
+   "return_pct": -20.46,
+   "exit_price": 0.0003135,
+   "closed": 1795787158.1654272
   },
   {
    "address": "7cPKubouxwsSy4aAKHtDKUETZ6uxVZDntRuy7Cappump",
@@ -1337,11 +1353,12 @@
    "entry_price": 0.0001819,
    "group": "random",
    "picked": false,
-   "status": "open",
+   "status": "closed",
    "opened": 1795695414.1323318,
    "snaps": {
     "1h": -7.34,
-    "6h": -7.34
+    "6h": -7.34,
+    "24h": 4.97
    },
    "source": "profile_updates",
    "liquidity": 29595.59,
@@ -1379,7 +1396,10 @@
    "strategy_gen": 1795639795.9606187,
    "bt_matched": false,
    "bt_rules": [],
-   "last_price": 0.0001953
+   "last_price": 0.0001964,
+   "return_pct": 4.97,
+   "exit_price": 0.0001964,
+   "closed": 1795787158.1654272
   },
   {
    "address": "38M2z4UCfZEkUHFzD48vhKQhFhNyRGto8pZbLjNipump",
@@ -1433,7 +1453,7 @@
    "strategy_gen": 1795728157.513252,
    "bt_matched": false,
    "bt_rules": [],
-   "last_price": 0.0005589
+   "last_price": 0.0004921
   },
   {
    "address": "PgFtGGquvnv2zEkjG2N2QPvBTBrafuExGYEqahRpump",
@@ -1487,7 +1507,7 @@
    "strategy_gen": 1795728157.513252,
    "bt_matched": false,
    "bt_rules": [],
-   "last_price": 0.006417
+   "last_price": 0.005401
   },
   {
    "address": "CFX1gH7CKYwqYXrfDkS2MUxJcEhs8PT63DyRA1chpump",
@@ -1541,7 +1561,7 @@
    "strategy_gen": null,
    "bt_matched": null,
    "bt_rules": null,
-   "last_price": 1.586e-06
+   "last_price": 1.553e-06
   },
   {
    "address": "Bb38n8AVLMh9amo8qtjLvqE8nPtfs8GEsyzg1pC6pump",
@@ -1595,7 +1615,7 @@
    "strategy_gen": null,
    "bt_matched": null,
    "bt_rules": null,
-   "last_price": 1.402e-06
+   "last_price": 1.379e-06
   },
   {
    "address": "CvXQ9qEriGgTbMWyF8L1U7oqn9ev8A49N1dzNE8cpump",
@@ -1607,7 +1627,10 @@
    "picked": true,
    "status": "open",
    "opened": 1795752375.485859,
-   "snaps": {},
+   "snaps": {
+    "1h": -10.31,
+    "6h": -10.31
+   },
    "source": "profile_updates",
    "liquidity": 38911.01,
    "volume_24h": 106887.42,
@@ -1647,7 +1670,8 @@
    "strategy_rules": [],
    "strategy_gen": 1795728157.513252,
    "bt_matched": false,
-   "bt_rules": []
+   "bt_rules": [],
+   "last_price": 0.0001787
   },
   {
    "address": "9TKbd3VFaMSXsEAicD9JVQWpWwAoLi4fSgWmZL2cpump",
@@ -1659,7 +1683,10 @@
    "picked": false,
    "status": "open",
    "opened": 1795752375.4858775,
-   "snaps": {},
+   "snaps": {
+    "1h": 20.55,
+    "6h": 20.55
+   },
    "source": "boosts_latest",
    "liquidity": 62917.75,
    "volume_24h": 1844128.33,
@@ -1697,7 +1724,8 @@
    "strategy_rules": null,
    "strategy_gen": null,
    "bt_matched": null,
-   "bt_rules": null
+   "bt_rules": null,
+   "last_price": 0.000767
   },
   {
    "address": "4obGGXRMVyqpWZr12UzyaBdNkgdYwz2GiY8enmd2pump",
@@ -1709,7 +1737,10 @@
    "picked": false,
    "status": "open",
    "opened": 1795752375.4858859,
-   "snaps": {},
+   "snaps": {
+    "1h": -100.0,
+    "6h": -100.0
+   },
    "source": "profiles",
    "liquidity": 66667.67,
    "volume_24h": 1096081.75,
@@ -1747,7 +1778,8 @@
    "strategy_rules": null,
    "strategy_gen": null,
    "bt_matched": null,
-   "bt_rules": null
+   "bt_rules": null,
+   "last_price": 1.637e-06
   },
   {
    "address": "5xrT8y2KU2YwzipwCMNxxTc8KAGQd4wjtGTc2WyJJCMh",
@@ -1759,7 +1791,10 @@
    "picked": false,
    "status": "open",
    "opened": 1795752375.4858913,
-   "snaps": {},
+   "snaps": {
+    "1h": -82.78,
+    "6h": -82.78
+   },
    "source": "profiles",
    "liquidity": 27578.18,
    "volume_24h": 750298.8,
@@ -1797,7 +1832,8 @@
    "strategy_rules": null,
    "strategy_gen": null,
    "bt_matched": null,
-   "bt_rules": null
+   "bt_rules": null,
+   "last_price": 2.026e-05
   },
   {
    "address": "G2XqmSc8vJpLLwaLVXUeNkxsrhVT8vQ3Pje8MqeDpump",
@@ -1809,7 +1845,10 @@
    "picked": false,
    "status": "open",
    "opened": 1795752375.4858959,
-   "snaps": {},
+   "snaps": {
+    "1h": -100.0,
+    "6h": -100.0
+   },
    "source": "profiles",
    "liquidity": 52779.88,
    "volume_24h": 575172.89,
@@ -1847,7 +1886,159 @@
    "strategy_rules": null,
    "strategy_gen": null,
    "bt_matched": null,
-   "bt_rules": null
+   "bt_rules": null,
+   "last_price": 1.888e-06
+  },
+  {
+   "address": "7Y2CVbnqZRvR5RUvEJ9RQ73fZEfv7ybNcysytAepump",
+   "symbol": "WINSTON",
+   "name": "Winstoncoin",
+   "description": "\"I just want the world to know he existed.\"",
+   "entry_price": 0.0001526,
+   "group": "random",
+   "picked": false,
+   "status": "open",
+   "opened": 1795787174.1640546,
+   "snaps": {},
+   "source": "profiles",
+   "liquidity": 28669.94,
+   "volume_24h": 508789.67,
+   "change_1h_pct": 405,
+   "change_6h_pct": 405,
+   "change_24h_pct": 405,
+   "buys_24h": 6804,
+   "sells_24h": 5736,
+   "age_hours": 0.5,
+   "fdv": 152384,
+   "rug_score": 1,
+   "danger_flags": [],
+   "roundtrip": 0.973,
+   "has_website": 1,
+   "has_twitter": 1,
+   "has_telegram": 0,
+   "has_discord": 0,
+   "twitter_kind": "post",
+   "twitter_handle": "barnsrebirth0",
+   "n_socials": 2,
+   "desc_len": 43,
+   "narrative_category": "other",
+   "narrative_coherence": 1,
+   "narrative_copycat": 0,
+   "narrative_flags": [
+    "generic_text"
+   ],
+   "n_flags": 1,
+   "x_followers": null,
+   "x_tweets": null,
+   "x_age_days": null,
+   "reject_reasons": [],
+   "safe_core": true,
+   "strategy_matched": false,
+   "strategy_rules": [],
+   "strategy_gen": 1795728157.513252,
+   "bt_matched": false,
+   "bt_rules": []
+  },
+  {
+   "address": "GXpQZkap4ExgQTTX4SXfETV7nt1YZKEZSakqos3hpump",
+   "symbol": "TWORBIT",
+   "name": "Tworbit",
+   "description": "Double the thrust from the launch pad to the nursery class! Every junior astronaut gets twin golden rockets for show-and-tell. One matched from the booster, one from the builder, sending playground recess straight into double orbit.",
+   "entry_price": 0.0002538,
+   "group": "ai",
+   "picked": true,
+   "status": "open",
+   "opened": 1795787174.1640737,
+   "snaps": {},
+   "source": "profiles",
+   "liquidity": 35556.45,
+   "volume_24h": 289276.52,
+   "change_1h_pct": 435,
+   "change_6h_pct": 435,
+   "change_24h_pct": 435,
+   "buys_24h": 10844,
+   "sells_24h": 1109,
+   "age_hours": 0.5,
+   "fdv": 253800,
+   "rug_score": 1,
+   "danger_flags": [],
+   "roundtrip": 0.974,
+   "has_website": 1,
+   "has_twitter": 1,
+   "has_telegram": 0,
+   "has_discord": 0,
+   "twitter_kind": "profile",
+   "twitter_handle": "tworbitflight",
+   "n_socials": 2,
+   "desc_len": 232,
+   "narrative_category": "internet_meme",
+   "narrative_coherence": 3,
+   "narrative_copycat": 0,
+   "narrative_flags": [
+    "hype_only",
+    "generic_text"
+   ],
+   "n_flags": 2,
+   "x_followers": null,
+   "x_tweets": null,
+   "x_age_days": null,
+   "reject_reasons": [],
+   "safe_core": true,
+   "strategy_matched": false,
+   "strategy_rules": [],
+   "strategy_gen": 1795728157.513252,
+   "bt_matched": false,
+   "bt_rules": []
+  },
+  {
+   "address": "8rjgC1GsBo4fwuXjq7Hy12SAFxgFxbtSJJSFBYkVpump",
+   "symbol": "WW",
+   "name": "The Wizarding World ",
+   "description": "The Wizarding World of Harry Potter brought to life on-chain.\n\nEcosystem:\nHARRY: 73N1jGkNLzzEgKQNWBx7sDTQGna6V7cgGWCcsUmMpump\nHCUP: 8L72tJG64V4jivU4m3VdB925SfgAMNhvgPkLfFAopump\nGRYFFINDOR: 7rdwLVQ4aV5QWCSUesHQhp3Ty4DjbGAYK6PfVzEapump\nHUFFLEPUFF: 8aW9DpQVPYKbZCJbahyPAjDghmJ4k4TnKGRBnqAspump\nRAVENCLAW",
+   "entry_price": 0.0006455,
+   "group": "ai",
+   "picked": true,
+   "status": "open",
+   "opened": 1795787174.1640851,
+   "snaps": {},
+   "source": "boosts_latest",
+   "liquidity": 61014.09,
+   "volume_24h": 121727.58,
+   "change_1h_pct": 4.04,
+   "change_6h_pct": -11.05,
+   "change_24h_pct": 79.92,
+   "buys_24h": 921,
+   "sells_24h": 996,
+   "age_hours": 213.3,
+   "fdv": 605541,
+   "rug_score": 1,
+   "danger_flags": [],
+   "roundtrip": 0.978,
+   "has_website": 1,
+   "has_twitter": 1,
+   "has_telegram": 0,
+   "has_discord": 0,
+   "twitter_kind": "profile",
+   "twitter_handle": "wizardingfans",
+   "n_socials": 2,
+   "desc_len": 300,
+   "narrative_category": "other",
+   "narrative_coherence": 4,
+   "narrative_copycat": 1,
+   "narrative_flags": [
+    "copycat_name"
+   ],
+   "n_flags": 1,
+   "x_followers": null,
+   "x_tweets": null,
+   "x_age_days": null,
+   "reject_reasons": [],
+   "safe_core": true,
+   "strategy_matched": false,
+   "strategy_rules": [],
+   "strategy_gen": 1795728157.513252,
+   "bt_matched": false,
+   "bt_rules": []
   }
  ],
  "last_report": 1795573348.3316295

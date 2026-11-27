@@ -361,11 +361,12 @@
    "entry_price": 0.0001551,
    "group": "random",
    "picked": false,
-   "status": "open",
+   "status": "closed",
    "opened": 1795639942.6418934,
    "snaps": {
     "1h": -100.0,
-    "6h": -100.0
+    "6h": -100.0,
+    "24h": -100.0
    },
    "source": "profiles",
    "liquidity": 28355.66,
@@ -406,7 +407,10 @@
    "strategy_gen": 1795639795.9606187,
    "bt_matched": false,
    "bt_rules": [],
-   "last_price": 1.489e-06
+   "last_price": 1.552e-06,
+   "return_pct": -100.0,
+   "exit_price": 1.552e-06,
+   "closed": 1795752369.0476348
   },
   {
    "address": "FVzqGqRmr4UH1Fif6dewmwbJ1p4YUZCu8dcw4Efopump",
@@ -590,11 +594,12 @@
    "entry_price": 0.0003132,
    "group": "rejected",
    "picked": false,
-   "status": "open",
+   "status": "closed",
    "opened": 1795639942.6419191,
    "snaps": {
     "1h": -100.0,
-    "6h": -100.0
+    "6h": -100.0,
+    "24h": -100.0
    },
    "source": "profiles",
    "liquidity": 39268.29,
@@ -634,7 +639,10 @@
    "strategy_gen": null,
    "bt_matched": null,
    "bt_rules": null,
-   "last_price": 1.365e-06
+   "last_price": 1.352e-06,
+   "return_pct": -100.0,
+   "exit_price": 1.352e-06,
+   "closed": 1795752369.0476348
   },
   {
    "address": "H2iscCQ4RiZ5ufu3UTBS2VDrVqbNY8gN7eVSSASBpump",
@@ -760,11 +768,12 @@
    "entry_price": 0.0002123,
    "group": "random",
    "picked": false,
-   "status": "open",
+   "status": "closed",
    "opened": 1795662256.1503203,
    "snaps": {
     "1h": -19.77,
-    "6h": -19.77
+    "6h": -19.77,
+    "24h": -18.73
    },
    "source": "boosts_latest",
    "liquidity": 34856.72,
@@ -806,7 +815,10 @@
    "strategy_gen": 1795639795.9606187,
    "bt_matched": false,
    "bt_rules": [],
-   "last_price": 0.0002019
+   "last_price": 0.0001789,
+   "return_pct": -18.73,
+   "exit_price": 0.0001789,
+   "closed": 1795752369.0476348
   },
   {
    "address": "6HS1aeSk7osT5B1CzLp1HTRTAweFr5wurfMHS4vppump",
@@ -816,11 +828,12 @@
    "entry_price": 0.0007569,
    "group": "rejected",
    "picked": false,
-   "status": "open",
+   "status": "closed",
    "opened": 1795662256.1503384,
    "snaps": {
     "1h": -53.43,
-    "6h": -53.43
+    "6h": -53.43,
+    "24h": -100.0
    },
    "source": "boosts_latest",
    "liquidity": 63334.46,
@@ -860,7 +873,10 @@
    "strategy_gen": null,
    "bt_matched": null,
    "bt_rules": null,
-   "last_price": 1.544e-06
+   "last_price": 1.532e-06,
+   "return_pct": -100.0,
+   "exit_price": 1.532e-06,
+   "closed": 1795752369.0476348
   },
   {
    "address": "3gmFG4sFDJErDV8pacFrL2uUPXeGJTYLjfRy4hFypump",
@@ -870,11 +886,12 @@
    "entry_price": 0.0007379,
    "group": "rejected",
    "picked": false,
-   "status": "open",
+   "status": "closed",
    "opened": 1795662256.1503465,
    "snaps": {
     "1h": -29.03,
-    "6h": -29.03
+    "6h": -29.03,
+    "24h": -100.0
    },
    "source": "boosts_latest",
    "liquidity": 62484.09,
@@ -914,7 +931,10 @@
    "strategy_gen": null,
    "bt_matched": null,
    "bt_rules": null,
-   "last_price": 1.648e-06
+   "last_price": 1.65e-06,
+   "return_pct": -100.0,
+   "exit_price": 1.65e-06,
+   "closed": 1795752369.0476348
   },
   {
    "address": "Bnw5JRPek5JvJhzUiB9yrs2cmzt4bLeFqSRzDzSppump",
@@ -924,11 +944,12 @@
    "entry_price": 0.001086,
    "group": "rejected",
    "picked": false,
-   "status": "open",
+   "status": "closed",
    "opened": 1795662256.1503522,
    "snaps": {
     "1h": 47.37,
-    "6h": 47.37
+    "6h": 47.37,
+    "24h": -100.0
    },
    "source": "boosts_latest",
    "liquidity": 74719.73,
@@ -968,7 +989,10 @@
    "strategy_gen": null,
    "bt_matched": null,
    "bt_rules": null,
-   "last_price": 1.521e-06
+   "last_price": 1.464e-06,
+   "return_pct": -100.0,
+   "exit_price": 1.464e-06,
+   "closed": 1795752369.0476348
   },
   {
    "address": "ANvsL4A6tJKAXJsPg7XVSHQA7KYmFcpW42jPuhVtpump",
@@ -978,11 +1002,12 @@
    "entry_price": 0.0001434,
    "group": "rejected",
    "picked": false,
-   "status": "open",
+   "status": "closed",
    "opened": 1795662256.150357,
    "snaps": {
     "1h": 29.98,
-    "6h": 29.98
+    "6h": 29.98,
+    "24h": -45.32
    },
    "source": "profile_updates",
    "liquidity": 29598.37,
@@ -1022,7 +1047,10 @@
    "strategy_gen": null,
    "bt_matched": null,
    "bt_rules": null,
-   "last_price": 0.0001384
+   "last_price": 8.271e-05,
+   "return_pct": -45.32,
+   "exit_price": 8.271e-05,
+   "closed": 1795752369.0476348
   },
   {
    "address": "Fo2HAwr7ZAUM2bSZ7MWSi16e3aWGpbw5MsUDYCttpump",
@@ -1032,11 +1060,12 @@
    "entry_price": 0.001118,
    "group": "rejected",
    "picked": false,
-   "status": "open",
+   "status": "closed",
    "opened": 1795662256.1503608,
    "snaps": {
     "1h": 711.13,
-    "6h": 711.13
+    "6h": 711.13,
+    "24h": 871.96
    },
    "source": "profiles",
    "liquidity": 74935.11,
@@ -1076,7 +1105,10 @@
    "strategy_gen": null,
    "bt_matched": null,
    "bt_rules": null,
-   "last_price": 0.009526
+   "last_price": 0.0109,
+   "return_pct": 871.96,
+   "exit_price": 0.0109,
+   "closed": 1795752369.0476348
   },
   {
    "address": "9QT8K685Hrae4k11dhGXirdtpfAaimExtyfwt8cPpump",
@@ -1130,7 +1162,7 @@
    "strategy_gen": 1795639795.9606187,
    "bt_matched": false,
    "bt_rules": [],
-   "last_price": 0.000254
+   "last_price": 0.0002502
   },
   {
    "address": "9Pq7aLAbhDG2tTnS22cm6kuysZVcZpLFE368HWuypump",
@@ -1185,7 +1217,7 @@
    "strategy_gen": 1795639795.9606187,
    "bt_matched": false,
    "bt_rules": [],
-   "last_price": 0.001637
+   "last_price": 0.001848
   },
   {
    "address": "4kjruqGHDsSqkMdFfCjV7Vb62HPFhtXyWc2t6JpQzDnz",
@@ -1241,7 +1273,7 @@
    "strategy_gen": 1795639795.9606187,
    "bt_matched": false,
    "bt_rules": [],
-   "last_price": 0.002146
+   "last_price": 0.001914
   },
   {
    "address": "ngwxpGYdkauMcxLFrNTKp8qBgK7JV53zVvd7F2spump",
@@ -1295,7 +1327,7 @@
    "strategy_gen": 1795639795.9606187,
    "bt_matched": false,
    "bt_rules": [],
-   "last_price": 0.0004127
+   "last_price": 0.0003547
   },
   {
    "address": "7cPKubouxwsSy4aAKHtDKUETZ6uxVZDntRuy7Cappump",
@@ -1347,7 +1379,7 @@
    "strategy_gen": 1795639795.9606187,
    "bt_matched": false,
    "bt_rules": [],
-   "last_price": 0.000174
+   "last_price": 0.0001953
   },
   {
    "address": "38M2z4UCfZEkUHFzD48vhKQhFhNyRGto8pZbLjNipump",
@@ -1359,7 +1391,10 @@
    "picked": true,
    "status": "open",
    "opened": 1795729992.6302242,
-   "snaps": {},
+   "snaps": {
+    "1h": 12.48,
+    "6h": 12.48
+   },
    "source": "boosts_latest",
    "liquidity": 63134.32,
    "volume_24h": 1536314.91,
@@ -1397,7 +1432,8 @@
    "strategy_rules": [],
    "strategy_gen": 1795728157.513252,
    "bt_matched": false,
-   "bt_rules": []
+   "bt_rules": [],
+   "last_price": 0.0005589
   },
   {
    "address": "PgFtGGquvnv2zEkjG2N2QPvBTBrafuExGYEqahRpump",
@@ -1409,7 +1445,10 @@
    "picked": true,
    "status": "open",
    "opened": 1795729992.6302433,
-   "snaps": {},
+   "snaps": {
+    "1h": -24.13,
+    "6h": -24.13
+   },
    "source": "boosts_latest",
    "liquidity": 223350.12,
    "volume_24h": 1459749.34,
@@ -1447,7 +1486,8 @@
    "strategy_rules": [],
    "strategy_gen": 1795728157.513252,
    "bt_matched": false,
-   "bt_rules": []
+   "bt_rules": [],
+   "last_price": 0.006417
   },
   {
    "address": "CFX1gH7CKYwqYXrfDkS2MUxJcEhs8PT63DyRA1chpump",
@@ -1459,7 +1499,10 @@
    "picked": false,
    "status": "open",
    "opened": 1795729992.6302543,
-   "snaps": {},
+   "snaps": {
+    "1h": -100.0,
+    "6h": -100.0
+   },
    "source": "profiles",
    "liquidity": 91951.7,
    "volume_24h": 1114741.32,
@@ -1497,7 +1540,8 @@
    "strategy_rules": null,
    "strategy_gen": null,
    "bt_matched": null,
-   "bt_rules": null
+   "bt_rules": null,
+   "last_price": 1.586e-06
   },
   {
    "address": "Bb38n8AVLMh9amo8qtjLvqE8nPtfs8GEsyzg1pC6pump",
@@ -1509,7 +1553,10 @@
    "picked": false,
    "status": "open",
    "opened": 1795729992.6302614,
-   "snaps": {},
+   "snaps": {
+    "1h": -100.0,
+    "6h": -100.0
+   },
    "source": "profiles",
    "liquidity": 72117.64,
    "volume_24h": 656283.61,
@@ -1531,6 +1578,259 @@
    "twitter_handle": "thecateball",
    "n_socials": 2,
    "desc_len": 58,
+   "narrative_category": null,
+   "narrative_coherence": null,
+   "narrative_copycat": null,
+   "narrative_flags": null,
+   "n_flags": null,
+   "x_followers": null,
+   "x_tweets": null,
+   "x_age_days": null,
+   "reject_reasons": [
+    "overextended pump"
+   ],
+   "safe_core": false,
+   "strategy_matched": null,
+   "strategy_rules": null,
+   "strategy_gen": null,
+   "bt_matched": null,
+   "bt_rules": null,
+   "last_price": 1.402e-06
+  },
+  {
+   "address": "CvXQ9qEriGgTbMWyF8L1U7oqn9ev8A49N1dzNE8cpump",
+   "symbol": "CINU",
+   "name": "Cate Inu ",
+   "description": "Cate Inu, the number 1 Cate pair this bull run. We love Cate, and we love Inu. Coded",
+   "entry_price": 0.0001928,
+   "group": "ai",
+   "picked": true,
+   "status": "open",
+   "opened": 1795752375.485859,
+   "snaps": {},
+   "source": "profile_updates",
+   "liquidity": 38911.01,
+   "volume_24h": 106887.42,
+   "change_1h_pct": 23.82,
+   "change_6h_pct": 320,
+   "change_24h_pct": 320,
+   "buys_24h": 1241,
+   "sells_24h": 1037,
+   "age_hours": 5.7,
+   "fdv": 192582,
+   "rug_score": 1,
+   "danger_flags": [],
+   "roundtrip": 0.982,
+   "has_website": 1,
+   "has_twitter": 1,
+   "has_telegram": 1,
+   "has_discord": 0,
+   "twitter_kind": "profile",
+   "twitter_handle": "cateinu_",
+   "n_socials": 3,
+   "desc_len": 84,
+   "narrative_category": "internet_meme",
+   "narrative_coherence": 2,
+   "narrative_copycat": 0,
+   "narrative_flags": [
+    "generic_text",
+    "copycat_name",
+    "hype_only"
+   ],
+   "n_flags": 3,
+   "x_followers": null,
+   "x_tweets": null,
+   "x_age_days": null,
+   "reject_reasons": [],
+   "safe_core": true,
+   "strategy_matched": false,
+   "strategy_rules": [],
+   "strategy_gen": 1795728157.513252,
+   "bt_matched": false,
+   "bt_rules": []
+  },
+  {
+   "address": "9TKbd3VFaMSXsEAicD9JVQWpWwAoLi4fSgWmZL2cpump",
+   "symbol": "Snowball",
+   "name": "Snowball",
+   "description": "A different kind of Snowball. Increasing demand for the coin instead of reducing its supply. Turning buybacks into new holders.",
+   "entry_price": 0.0006208,
+   "group": "rejected",
+   "picked": false,
+   "status": "open",
+   "opened": 1795752375.4858775,
+   "snaps": {},
+   "source": "boosts_latest",
+   "liquidity": 62917.75,
+   "volume_24h": 1844128.33,
+   "change_1h_pct": -5.16,
+   "change_6h_pct": -13.8,
+   "change_24h_pct": 5973,
+   "buys_24h": 28092,
+   "sells_24h": 24628,
+   "age_hours": 33.7,
+   "fdv": 620833,
+   "rug_score": null,
+   "danger_flags": null,
+   "roundtrip": null,
+   "has_website": 1,
+   "has_twitter": 1,
+   "has_telegram": 0,
+   "has_discord": 0,
+   "twitter_kind": "profile",
+   "twitter_handle": "holdersnowball",
+   "n_socials": 2,
+   "desc_len": 127,
+   "narrative_category": null,
+   "narrative_coherence": null,
+   "narrative_copycat": null,
+   "narrative_flags": null,
+   "n_flags": null,
+   "x_followers": null,
+   "x_tweets": null,
+   "x_age_days": null,
+   "reject_reasons": [
+    "overextended pump"
+   ],
+   "safe_core": false,
+   "strategy_matched": null,
+   "strategy_rules": null,
+   "strategy_gen": null,
+   "bt_matched": null,
+   "bt_rules": null
+  },
+  {
+   "address": "4obGGXRMVyqpWZr12UzyaBdNkgdYwz2GiY8enmd2pump",
+   "symbol": "Santaball",
+   "name": "Santaball",
+   "description": "he plugs the chimney and keeps rolling\ud83c\udf85",
+   "entry_price": 0.0008435,
+   "group": "rejected",
+   "picked": false,
+   "status": "open",
+   "opened": 1795752375.4858859,
+   "snaps": {},
+   "source": "profiles",
+   "liquidity": 66667.67,
+   "volume_24h": 1096081.75,
+   "change_1h_pct": -15.96,
+   "change_6h_pct": 2257,
+   "change_24h_pct": 2257,
+   "buys_24h": 33529,
+   "sells_24h": 9122,
+   "age_hours": 2.3,
+   "fdv": 843355,
+   "rug_score": null,
+   "danger_flags": null,
+   "roundtrip": null,
+   "has_website": 1,
+   "has_twitter": 1,
+   "has_telegram": 0,
+   "has_discord": 0,
+   "twitter_kind": "profile",
+   "twitter_handle": "santaballmeme",
+   "n_socials": 2,
+   "desc_len": 39,
+   "narrative_category": null,
+   "narrative_coherence": null,
+   "narrative_copycat": null,
+   "narrative_flags": null,
+   "n_flags": null,
+   "x_followers": null,
+   "x_tweets": null,
+   "x_age_days": null,
+   "reject_reasons": [
+    "overextended pump"
+   ],
+   "safe_core": false,
+   "strategy_matched": null,
+   "strategy_rules": null,
+   "strategy_gen": null,
+   "bt_matched": null,
+   "bt_rules": null
+  },
+  {
+   "address": "5xrT8y2KU2YwzipwCMNxxTc8KAGQd4wjtGTc2WyJJCMh",
+   "symbol": "DragonRiders",
+   "name": "DragonRiders",
+   "description": "The official DragonRiders coin, the members name in the SPX subreddit. Paired to SPX.",
+   "entry_price": 0.0001002,
+   "group": "rejected",
+   "picked": false,
+   "status": "open",
+   "opened": 1795752375.4858913,
+   "snaps": {},
+   "source": "profiles",
+   "liquidity": 27578.18,
+   "volume_24h": 750298.8,
+   "change_1h_pct": -50.79,
+   "change_6h_pct": 105,
+   "change_24h_pct": 105,
+   "buys_24h": 10979,
+   "sells_24h": 7985,
+   "age_hours": 1.9,
+   "fdv": 100259,
+   "rug_score": null,
+   "danger_flags": null,
+   "roundtrip": null,
+   "has_website": 1,
+   "has_twitter": 1,
+   "has_telegram": 0,
+   "has_discord": 0,
+   "twitter_kind": "post",
+   "twitter_handle": "bbaoo777",
+   "n_socials": 2,
+   "desc_len": 85,
+   "narrative_category": null,
+   "narrative_coherence": null,
+   "narrative_copycat": null,
+   "narrative_flags": null,
+   "n_flags": null,
+   "x_followers": null,
+   "x_tweets": null,
+   "x_age_days": null,
+   "reject_reasons": [
+    "falling fast"
+   ],
+   "safe_core": false,
+   "strategy_matched": null,
+   "strategy_rules": null,
+   "strategy_gen": null,
+   "bt_matched": null,
+   "bt_rules": null
+  },
+  {
+   "address": "G2XqmSc8vJpLLwaLVXUeNkxsrhVT8vQ3Pje8MqeDpump",
+   "symbol": "SpaceXCoin",
+   "name": "SpaceXCoin",
+   "description": "SpaceXCoin represents SpaceXLife",
+   "entry_price": 0.0005355,
+   "group": "rejected",
+   "picked": false,
+   "status": "open",
+   "opened": 1795752375.4858959,
+   "snaps": {},
+   "source": "profiles",
+   "liquidity": 52779.88,
+   "volume_24h": 575172.89,
+   "change_1h_pct": 62.69,
+   "change_6h_pct": 1525,
+   "change_24h_pct": 1525,
+   "buys_24h": 16951,
+   "sells_24h": 2885,
+   "age_hours": 1.7,
+   "fdv": 535380,
+   "rug_score": null,
+   "danger_flags": null,
+   "roundtrip": null,
+   "has_website": 1,
+   "has_twitter": 1,
+   "has_telegram": 0,
+   "has_discord": 0,
+   "twitter_kind": "profile",
+   "twitter_handle": "sxconsol",
+   "n_socials": 2,
+   "desc_len": 32,
    "narrative_category": null,
    "narrative_coherence": null,
    "narrative_copycat": null,

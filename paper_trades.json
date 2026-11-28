@@ -1641,11 +1641,12 @@
    "entry_price": 0.0001928,
    "group": "ai",
    "picked": true,
-   "status": "open",
+   "status": "closed",
    "opened": 1795752375.485859,
    "snaps": {
     "1h": -10.31,
-    "6h": -10.31
+    "6h": -10.31,
+    "24h": -36.87
    },
    "source": "profile_updates",
    "liquidity": 38911.01,
@@ -1687,7 +1688,10 @@
    "strategy_gen": 1795728157.513252,
    "bt_matched": false,
    "bt_rules": [],
-   "last_price": 0.0001348
+   "last_price": 0.0001275,
+   "return_pct": -36.87,
+   "exit_price": 0.0001275,
+   "closed": 1795840856.546251
   },
   {
    "address": "9TKbd3VFaMSXsEAicD9JVQWpWwAoLi4fSgWmZL2cpump",
@@ -1697,11 +1701,12 @@
    "entry_price": 0.0006208,
    "group": "rejected",
    "picked": false,
-   "status": "open",
+   "status": "closed",
    "opened": 1795752375.4858775,
    "snaps": {
     "1h": 20.55,
-    "6h": 20.55
+    "6h": 20.55,
+    "24h": -46.35
    },
    "source": "boosts_latest",
    "liquidity": 62917.75,
@@ -1741,7 +1746,10 @@
    "strategy_gen": null,
    "bt_matched": null,
    "bt_rules": null,
-   "last_price": 0.0005455
+   "last_price": 0.0003517,
+   "return_pct": -46.35,
+   "exit_price": 0.0003517,
+   "closed": 1795840856.546251
   },
   {
    "address": "4obGGXRMVyqpWZr12UzyaBdNkgdYwz2GiY8enmd2pump",
@@ -1751,11 +1759,12 @@
    "entry_price": 0.0008435,
    "group": "rejected",
    "picked": false,
-   "status": "open",
+   "status": "closed",
    "opened": 1795752375.4858859,
    "snaps": {
     "1h": -100.0,
-    "6h": -100.0
+    "6h": -100.0,
+    "24h": -100.0
    },
    "source": "profiles",
    "liquidity": 66667.67,
@@ -1795,7 +1804,10 @@
    "strategy_gen": null,
    "bt_matched": null,
    "bt_rules": null,
-   "last_price": 1.703e-06
+   "last_price": 1.675e-06,
+   "return_pct": -100.0,
+   "exit_price": 1.675e-06,
+   "closed": 1795840856.546251
   },
   {
    "address": "5xrT8y2KU2YwzipwCMNxxTc8KAGQd4wjtGTc2WyJJCMh",
@@ -1805,11 +1817,12 @@
    "entry_price": 0.0001002,
    "group": "rejected",
    "picked": false,
-   "status": "open",
+   "status": "closed",
    "opened": 1795752375.4858913,
    "snaps": {
     "1h": -82.78,
-    "6h": -82.78
+    "6h": -82.78,
+    "24h": -95.66
    },
    "source": "profiles",
    "liquidity": 27578.18,
@@ -1849,7 +1862,10 @@
    "strategy_gen": null,
    "bt_matched": null,
    "bt_rules": null,
-   "last_price": 9.788e-06
+   "last_price": 7.358e-06,
+   "return_pct": -95.66,
+   "exit_price": 7.358e-06,
+   "closed": 1795840856.546251
   },
   {
    "address": "G2XqmSc8vJpLLwaLVXUeNkxsrhVT8vQ3Pje8MqeDpump",
@@ -1859,11 +1875,12 @@
    "entry_price": 0.0005355,
    "group": "rejected",
    "picked": false,
-   "status": "open",
+   "status": "closed",
    "opened": 1795752375.4858959,
    "snaps": {
     "1h": -100.0,
-    "6h": -100.0
+    "6h": -100.0,
+    "24h": -100.0
    },
    "source": "profiles",
    "liquidity": 52779.88,
@@ -1903,7 +1920,10 @@
    "strategy_gen": null,
    "bt_matched": null,
    "bt_rules": null,
-   "last_price": 1.806e-06
+   "last_price": 1.604e-06,
+   "return_pct": -100.0,
+   "exit_price": 1.604e-06,
+   "closed": 1795840856.546251
   },
   {
    "address": "7Y2CVbnqZRvR5RUvEJ9RQ73fZEfv7ybNcysytAepump",
@@ -1957,7 +1977,7 @@
    "strategy_gen": 1795728157.513252,
    "bt_matched": false,
    "bt_rules": [],
-   "last_price": 1.431e-05
+   "last_price": 1.061e-05
   },
   {
    "address": "GXpQZkap4ExgQTTX4SXfETV7nt1YZKEZSakqos3hpump",
@@ -1970,7 +1990,8 @@
    "status": "open",
    "opened": 1795787174.1640737,
    "snaps": {
-    "1h": -100.0
+    "1h": -100.0,
+    "6h": -100.0
    },
    "source": "profiles",
    "liquidity": 35556.45,
@@ -2064,7 +2085,7 @@
    "strategy_gen": 1795728157.513252,
    "bt_matched": false,
    "bt_rules": [],
-   "last_price": 0.0005962
+   "last_price": 0.000446
   },
   {
    "address": "9SMvQzDmGMpACAqET5PAmwUtHfBYdQ5a7SPLfQa4pump",
@@ -2076,7 +2097,10 @@
    "picked": true,
    "status": "open",
    "opened": 1795819108.6715922,
-   "snaps": {},
+   "snaps": {
+    "1h": -100.0,
+    "6h": -100.0
+   },
    "source": "profiles",
    "liquidity": 28748.5,
    "volume_24h": 339388.63,
@@ -2114,7 +2138,8 @@
    "strategy_rules": [],
    "strategy_gen": 1795813334.9810824,
    "bt_matched": false,
-   "bt_rules": []
+   "bt_rules": [],
+   "last_price": 1.405e-06
   },
   {
    "address": "GXjSWDoMQkDEbhon9ALxz8chUUsVKg3x8V3NajjDpump",
@@ -2126,7 +2151,10 @@
    "picked": false,
    "status": "open",
    "opened": 1795819108.6716108,
-   "snaps": {},
+   "snaps": {
+    "1h": 116.4,
+    "6h": 116.4
+   },
    "source": "profiles",
    "liquidity": 47752.41,
    "volume_24h": 3138995.02,
@@ -2165,7 +2193,8 @@
    "strategy_rules": null,
    "strategy_gen": null,
    "bt_matched": null,
-   "bt_rules": null
+   "bt_rules": null,
+   "last_price": 0.0005485
   },
   {
    "address": "H2PjSbA2365uxBUJ3EBePSm67AYPuRMgcyswBnrVpump",
@@ -2177,7 +2206,10 @@
    "picked": false,
    "status": "open",
    "opened": 1795819108.6716197,
-   "snaps": {},
+   "snaps": {
+    "1h": -100.0,
+    "6h": -100.0
+   },
    "source": "profiles",
    "liquidity": 92407.82,
    "volume_24h": 1424519,
@@ -2215,7 +2247,8 @@
    "strategy_rules": null,
    "strategy_gen": null,
    "bt_matched": null,
-   "bt_rules": null
+   "bt_rules": null,
+   "last_price": 1.42e-06
   },
   {
    "address": "B9wbjDJ4FbHMsZmoXAkJSTAwuePaJUKbySvnK5zApump",
@@ -2227,7 +2260,10 @@
    "picked": false,
    "status": "open",
    "opened": 1795819108.6716266,
-   "snaps": {},
+   "snaps": {
+    "1h": -43.65,
+    "6h": -43.65
+   },
    "source": "profile_updates",
    "liquidity": 62981.29,
    "volume_24h": 934449.47,
@@ -2265,7 +2301,8 @@
    "strategy_rules": null,
    "strategy_gen": null,
    "bt_matched": null,
-   "bt_rules": null
+   "bt_rules": null,
+   "last_price": 0.0004464
   },
   {
    "address": "3WsqUNArNSh5pYt6eTKbQ7uUJDgkPtFEA2XFvdEWpump",
@@ -2277,7 +2314,10 @@
    "picked": false,
    "status": "open",
    "opened": 1795819108.6716316,
-   "snaps": {},
+   "snaps": {
+    "1h": -100.0,
+    "6h": -100.0
+   },
    "source": "profiles",
    "liquidity": 66490.12,
    "volume_24h": 669959.27,
@@ -2315,7 +2355,8 @@
    "strategy_rules": null,
    "strategy_gen": null,
    "bt_matched": null,
-   "bt_rules": null
+   "bt_rules": null,
+   "last_price": 2.03e-06
   },
   {
    "address": "2B5Kvj7fYFjowTW959yYzWVvKVwvWGUi9e96e3kMw7PB",
@@ -2327,7 +2368,10 @@
    "picked": false,
    "status": "open",
    "opened": 1795819108.6716359,
-   "snaps": {},
+   "snaps": {
+    "1h": -80.16,
+    "6h": -80.16
+   },
    "source": "profiles",
    "liquidity": 27316.18,
    "volume_24h": 416384.41,
@@ -2365,7 +2409,8 @@
    "strategy_rules": null,
    "strategy_gen": null,
    "bt_matched": null,
-   "bt_rules": null
+   "bt_rules": null,
+   "last_price": 9.709e-06
   },
   {
    "address": "B8bkqfwkisTKcEQHpVZp5YeH5Wii2GWzjRiK4f7Cpump",
@@ -2377,7 +2422,10 @@
    "picked": false,
    "status": "open",
    "opened": 1795819108.6716402,
-   "snaps": {},
+   "snaps": {
+    "1h": -16.7,
+    "6h": -16.7
+   },
    "source": "profile_updates",
    "liquidity": 30723.98,
    "volume_24h": 115672.14,
@@ -2418,7 +2466,59 @@
    "strategy_rules": null,
    "strategy_gen": null,
    "bt_matched": null,
-   "bt_rules": null
+   "bt_rules": null,
+   "last_price": 0.0001575
+  },
+  {
+   "address": "EwUVBpdM5vw1CJHRMSLywzVjyQSJZpy6qboxEPBKpump",
+   "symbol": "PumpMas",
+   "name": "PumpMas",
+   "description": "The official Christmas coin for @Pumpfun",
+   "entry_price": 0.0001743,
+   "group": "ai",
+   "picked": true,
+   "status": "open",
+   "opened": 1795840862.4904704,
+   "snaps": {},
+   "source": "boosts_latest",
+   "liquidity": 30421.14,
+   "volume_24h": 59348.45,
+   "change_1h_pct": -3.35,
+   "change_6h_pct": -5.49,
+   "change_24h_pct": 33.3,
+   "buys_24h": 887,
+   "sells_24h": 660,
+   "age_hours": 319.7,
+   "fdv": 163490,
+   "rug_score": 1,
+   "danger_flags": [],
+   "roundtrip": 0.973,
+   "has_website": 1,
+   "has_twitter": 1,
+   "has_telegram": 1,
+   "has_discord": 0,
+   "twitter_kind": "profile",
+   "twitter_handle": "pumpmassol",
+   "n_socials": 3,
+   "desc_len": 40,
+   "narrative_category": "internet_meme",
+   "narrative_coherence": 3,
+   "narrative_copycat": 0,
+   "narrative_flags": [
+    "no_real_project",
+    "hype_only"
+   ],
+   "n_flags": 2,
+   "x_followers": null,
+   "x_tweets": null,
+   "x_age_days": null,
+   "reject_reasons": [],
+   "safe_core": true,
+   "strategy_matched": false,
+   "strategy_rules": [],
+   "strategy_gen": 1795813334.9810824,
+   "bt_matched": false,
+   "bt_rules": []
   }
  ],
  "last_report": 1795573348.3316295
